@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Динара | Онлайн-репетитор английского</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-main: #f5f3ff;
+      --purple: #7c3aed;
+      --purple-soft: #ede9fe;
+      --accent: #22c55e;
+      --text-main: #1f2933;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: url("https://avatars.mds.yandex.net/get-altay/897342/2a0000018b1ef382cafacbcbb7ae0b5ccba6/orig") center/cover fixed no-repeat;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .overlay {
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), rgba(245, 243, 255, 0.94));
+    }
+
+    header {
+      padding: 2.5rem 1rem 2.2rem;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(120deg, rgba(236, 233, 255, 0.96), rgba(219, 244, 255, 0.96));
+      border-radius: 24px;
+      padding: 2.3rem 2rem 2.1rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .header-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(124, 58, 237, 0.08);
+      color: var(--purple);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    header h1 {
+      margin: 0 0 0.4rem;
+      font-size: 2.2rem;
+      letter-spacing: 0.01em;
+      color: #111827;
+    }
+
+    header p {
+      margin: 0.25rem 0;
+      font-size: 1rem;
+    }
+
+    .header-highlight {
+      font-weight: 500;
+      color: #111827;
+    }
+
+    .header-sub {
+      margin-top: 0.6rem;
+      font-size: 0.98rem;
+      color: #4b5563;
+    }
+
+    .header-tags {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    .tag {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-weight: 500;
+    }
+
+    .tag-outline {
+      background: #ecfeff;
+      color: #0e7490;
+    }
+
+    .cta-row {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .cta-main {
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      background: #4f46e5;
+      color: white;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 12px 25px rgba(79, 70, 229, 0.35);
+    }
+
+    .cta-main span {
+      font-size: 1.1rem;
+    }
+
+    .cta-subtext {
+      color: #4b5563;
+    }
+
+    .header-side {
+      display: flex;
+      justify-content: center;
+    }
+
+    .header-photo-wrap {
+      position: relative;
+      width: 260px;
+      max-width: 100%;
+    }
+
+    .header-photo-glow {
+      position: absolute;
+      inset: -16px;
+      background: radial-gradient(circle at top, rgba(196, 181, 253, 0.8), rgba(125, 211, 252, 0.65), transparent 70%);
+      filter: blur(24px);
+      z-index: 1;
+    }
+
+    .header-photo {
+      position: relative;
+      z-index: 2;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+    }
+
+    .header-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .header-label {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17, 24, 39, 0.88);
+      color: #e5e7eb;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-label-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    .section {
+      padding: 2.5rem 1rem 0.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      color: #111827;
+      margin-bottom: 1.8rem;
+      font-size: 1.8rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section h2 span {
+      font-size: 1.3rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 20px;
+      padding: 1.8rem 1.7rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(260px, 0.95fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .about-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .about-title {
+      font-size: 1.6rem;
+      color: var(--purple);
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .about-text p {
+      margin: 0.4rem 0;
+      font-size: 1.02rem;
+    }
+
+    .about-text p strong {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .about-list {
+      margin: 0.6rem 0 0.8rem 1.1rem;
+      padding: 0;
+      font-size: 1rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .about-photo-block {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-photo-bg {
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle at top, rgba(196, 181, 253, 0.8), rgba(125, 211, 252, 0.75), transparent 70%);
+      filter: blur(30px);
+      z-index: 1;
+    }
+
+    .about-photo-img {
+      position: relative;
+      z-index: 2;
+      width: 320px;
+      max-width: 100%;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+    }
+
+    .about-photo-img img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .price-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.6rem;
+    }
+
+    .price-card {
+      background: linear-gradient(135deg, #f9fafb, #eef2ff);
+      border-radius: 18px;
+      padding: 1.4rem 1.5rem 1.5rem;
+      border: 1px solid rgba(129, 140, 248, 0.22);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .price-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(129, 140, 248, 0.18), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.14);
+    }
+
+    .price-card:hover::after {
+      opacity: 1;
+    }
+
+    .price-card h3 {
+      margin: 0 0 0.2rem;
+      font-size: 1.12rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #111827;
+    }
+
+    .price-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.45rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(129, 140, 248, 0.14);
+      font-size: 0.78rem;
+      color: #4338ca;
+      font-weight: 500;
+    }
+
+    .price-main {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0.1rem 0 0.6rem;
+      color: #111827;
+    }
+
+    .price-main span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #4b5563;
+    }
+
+    .price-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.96rem;
+      color: #374151;
+    }
+
+    .price-list li {
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+
+    .price-list li::before {
+      content: "✔";
+      font-size: 0.9rem;
+      margin-top: 0.1rem;
+      color: #22c55e;
+    }
+
+    .ribbon-tag {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      background: #f97316;
+      color: #fff7ed;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      box-shadow: 0 10px 20px rgba(248, 113, 22, 0.4);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.3rem;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 16px;
+      padding: 0.9rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    .video-card iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+      border-radius: 12px;
+      margin-bottom: 0.6rem;
+      background: #000;
+    }
+
+    .video-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .testimonial-wrapper {
+      position: relative;
+    }
+
+    .testimonial-slider {
+      overflow: hidden;
+    }
+
+    .testimonial-track {
+      display: flex;
+      gap: 1.2rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 0.4rem;
+    }
+
+    .testimonial-track::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .testimonial-track::-webkit-scrollbar-thumb {
+      background: #d1d5db;
+      border-radius: 999px;
+    }
+
+    .testimonial-card {
+      min-width: 320px;
+      max-width: 340px;
+      border-radius: 16px;
+      padding: 1rem 1.1rem 0.9rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      border-left: 4px solid #a855f7;
+      font-size: 0.92rem;
+    }
+    .testimonial-card:nth-child(1){background: #fef6ff;}
+    .testimonial-card:nth-child(2){background: #f5faff;}
+    .testimonial-card:nth-child(3){background: #f7fff5;}
+    .testimonial-card:nth-child(4){background: #fffaf5;}
+    .testimonial-card:nth-child(5){background: #f5f7ff;}
+    .testimonial-card:nth-child(6){background: #fff5fb;}
+    .testimonial-card:nth-child(7){background: #f5fffe;}
+    .testimonial-card:nth-child(8){background: #fffef5;}
+    .testimonial-card:nth-child(9){background: #f6f5ff;
+      min-width: 320px;
+      max-width: 340px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 16px;
+      padding: 1rem 1.1rem 0.9rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      border-left: 4px solid #a855f7;
+      font-size: 0.92rem;
+    }
+
+    .testimonial-card p {
+      margin: 0;
+    }
+
+    .testimonial-author {
+      margin-top: 0.6rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .testimonial-nav {
+      position: absolute;
+      top: 50%;
+      left: -16px;
+      right: -16px;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .testimonial-btn {
+      pointer-events: auto;
+      border: none;
+      background: #ffffff;
+      border-radius: 999px;
+      padding: 0.45rem 0.7rem;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.25);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #4b5563;
+    }
+
+    @media (max-width: 900px) {
+      .testimonial-nav {
+        left: 0;
+        right: 0;
+      }
+    }
+
+    .faq-card {
+      background: rgba(249, 250, 251, 0.96);
+    }
+
+    .faq-item {
+      margin-bottom: 0.7rem;
+      padding: 0.5rem 0.5rem;
+      border-radius: 12px;
+      transition: background 0.25s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .faq-item:hover {
+      background: #f3ecff;
+      transform: translateY(-1px);
+    }
+
+    .faq-item h4 {
+      margin: 0 0 0.3rem;
+      color: #7c3aed;
+      font-size: 1.02rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    .faq-toggle-icon {
+      font-size: 1.1rem;
+      color: #7c3aed;
+      margin-left: 0.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-item ul {
+      margin-top: 0.3rem;
+    }
+
+    .faq-item ul li {
+      margin-bottom: 0.2rem;
+    }
+
+    .contacts-card {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      text-align: left;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+
+      background: linear-gradient(135deg, #f3ecff, #e8f7ff, #f5fff3);
+      padding: 0.8rem 1rem 1rem;
+      border-radius: 18px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    }
+
+    .contacts-lead {
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin: 0 0 0.8rem;
+    }
+
+    .contacts-card h3 {
+      color: #6633cc;
+      margin: 0.4rem 0 0.4rem;
+      font-size: 1.02rem;
+    }
+
+    .contacts-card p {
+      margin: 0.15rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.8rem 1rem 2rem;
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
+
+    footer span {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <header>
+      <div class="header-inner">
+        <div>
+          <div class="badge"><span class="badge-dot"></span> Онлайн-репетитор английского</div>
+          <h1>Динара | Master English</h1>
+          <p class="header-highlight">Онлайн занятия для подростков и взрослых, которые боятся ошибок, теряют мотивацию и не могут начать говорить.</p>
+          <p class="header-sub">10+ лет опыта. Спокойный подход. Поддержка, а не давление.</p>
+          <div class="header-tags">
+            <span class="tag tag-outline">Подростки</span>
+            <span class="tag tag-outline">Взрослые</span>
+            <span class="tag tag-outline">Подготовка к ОГЭ / ЕГЭ</span>
+          </div>
+          <div class="cta-row">
+            <button class="cta-main" onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})">
+              <span>✉</span> Записаться на пробный урок
+            </button>
+            <div class="cta-subtext">Бесплатный пробный | от 1500₽ за занятие</div>
+          </div>
+        </div>
+        <div class="header-side">
+          <div class="header-photo-wrap">
+            <div class="header-photo-glow"></div>
+            <div class="header-photo">
+              <img src="https://i.postimg.cc/sDYC10Yq/IMG-20250818-143711-kopia.jpg" alt="Динара — онлайн-репетитор английского" style="width:100%; height:100%; object-fit: cover; object-position: top;" />
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="about">
+      <h2><span>👩‍🏫</span> Обо мне</h2>
+      <div class="card about-layout">
+        <div class="about-text">
+          <h3 class="about-title">Английский без стресса и без страха ошибок</h3>
+          <p><strong>Я работаю с подростками и взрослыми, которым трудно «включиться» в английский:</strong> всё забывается, страшно говорить, нет системы и прогресса.</p>
+          <p>На моих занятиях мы:</p>
+          <ul class="about-list">
+            <li>учимся говорить с уверенностью, а не просто выполнять задания;</li>
+            <li>разбираем грамматику простыми словами и сразу применяем её в речи;</li>
+            <li>используем живые материалы: видео, фразы из сериалов, диалоги, квесты;</li>
+            <li>развиваем навыки для школы, ОГЭ/ЕГЭ и жизни, с пониманием, а не зубрёжкой.</li>
+          </ul>
+          <p>Я строю доверие с учениками: здесь можно ошибаться, задавать вопросы, быть собой и двигаться вперёд с ощущением, что всё получается.</p>
+          <p><strong>Моя задача — не только объяснить, но и показать, что английский может быть доступным, логичным и по-настоящему интересным.</strong></p>
+        </div>
+        <div class="about-photo-block">
+          <div class="about-photo-bg"></div>
+          <div class="about-photo-img">
+            <img src="https://i.postimg.cc/cLChPvLv/Image-November.png" alt="Динара — репетитор английского" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="formats">
+      <h2><span>📚</span> Форматы и цены</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <span class="ribbon-tag" style="background:#22c55e; box-shadow:0 10px 20px rgba(34,197,94,0.4);">Хит</span>
+          <span class="price-pill">Для тех, кто хочет личное сопровождение</span>
+          <h3>👤 Индивидуальные занятия</h3>
+          <p class="price-main">1500 ₽ <span>/ 1 урок</span></p>
+          <ul class="price-list">
+            <li>Программа под вашу цель: общий английский, экзамены, разговорный.</li>
+            <li>Разбираем пробелы и «переводим» знания в уверенный уровень.</li>
+            <li>Отрабатываем лексику и грамматику сразу в речи, а не только в тетради.</li>
+            <li>Учимся не «знать наизусть», а использовать английский в реальных ситуациях.</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <span class="price-pill">Когда важна поддержка и больше общения</span>
+          <h3>👥 Занятия в паре</h3>
+          <p class="price-main">1000 ₽ <span>/ с человека</span></p>
+          <ul class="price-list">
+            <li>Больше практики: диалоги, игры, обсуждения между учениками.</li>
+            <li>Формат ускоряет прогресс: меньше стеснения, больше общения.</li>
+            <li>Пара учит слушать, реагировать, поддерживать разговор, а не молчать.</li>
+            <li>Уроки + чат с заданиями - английский есть и на занятии, и в жизни.</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <span class="ribbon-tag">Экзамены</span>
+          <span class="price-pill">Для тех, кто готовится к аттестации</span>
+          <h3>🎯 Подготовка к ОГЭ / ЕГЭ</h3>
+          <p class="price-main">от 1500 ₽ <span>/ урок</span></p>
+          <ul class="price-list">
+            <li>Все типы заданий: от аудирования до эссе и монолога.</li>
+            <li>Объясняю, как думает эксперт: на что смотрят и что снижает балл.</li>
+            <li>Готовимся по реальным материалам ФИПИ и актуальным сборникам.</li>
+            <li>Пишем 3–4 пробника за курс и отслеживаем прогресс по баллам.</li>
+            <li>Даю самостоятельные тренировки через марафоны и проверенные платформы.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="videos">
+      <h2><span>🎥</span> Видео с уроков</h2>
+      <div class="card">
+        <div class="video-grid">
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239076&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Что делал вчера? Учим Past Simple в диалоге</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239074&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Квест — КОТОстрофа: кто виноват?</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239063&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Приключение на поезде на английском</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239040&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Present Simple в реальных примерах | Мини-урок</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239024&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Профессии, которые вдохновляют</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239022&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Английский через сериал Silverpoint</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <h2><span>💬</span> Отзывы</h2>
+      <div class="card testimonial-wrapper">
+        <div class="testimonial-slider">
+          <div class="testimonial-track">
+            <div class="testimonial-card">
+              <p>«Лучший учитель английского! Отлично объясняет и понимающие относится. Всегда терпеливо подскажет. Обучение ведётся в разных форматах, что помогает лучше усваивать информацию. Спасибо, Динара Маратовна, за упорный труд уже как несколько лет!»</p>
+              <div class="testimonial-author">Татьяна, ученица</div>
+            </div>
+            <div class="testimonial-card">
+              <p>«Динара всегда приводит актуальные и интересные примеры, объясняет сложные правила простым и понятным языком. Это не просто преподаватель, это настоящий наставник.»</p>
+              <div class="testimonial-author">Лина, ученица</div>
+            </div>
+            <div class="testimonial-card">
+              <p>«Дочь занимается с Динарой Маратовной уже несколько лет, с 5 класса. Сейчас начал заниматься и младший ребёнок. Занятия детям очень нравятся, в школе с уроками английского языка проблем нет, отлично. Занимаются не только по школьной программе (как я и просила). Занятия интенсивные, интересные, с домашними заданиями. Преподаватель всегда на связи, все вопросы решаются в кратчайшие сроки.»</p>
+              <div class="testimonial-author">Альбина, мама</div>
+            </div>
+            <div class="testimonial-card">
+              <p>«Готовился к ОГЭ с Динарой — писали пробники, разбирали каждое задание. На экзамене не растерялся, всё было знакомо.»</p>
+              <div class="testimonial-author">Никита, выпускник</div>
+            </div>
+            <div class="testimonial-card">
+              <p>«Я рада, что встретила такого человека, как Динара Маратовна! Это ответственный и высокообразованный человек, который горит своим делом. Она умеет прислушаться, понять, в чём проблема, и разжевать материал по-максимуму. Мы занимались полтора года, и каждое занятие я ждала, потому что это было интересно.»</p>
+              <div class="testimonial-author">Инна, ученица</div>
+            </div>
+            <div class="testimonial-card">
+              <p>«Динара помогает вспомнить забытый английский. Пропала боязнь разговаривать, вспоминаем и грамматику, и лексику. Проходим разные, но всегда актуальные темы. В занятия включены упражнения, чтение, аудирование и другое. Преподаватель всегда вежлив и с чувством юмора. Кажется, она сможет найти подход к любому!»</p>
+              <div class="testimonial-author">Ольга, ученица</div>
+            </div>
+            <div class="testimonial-card">
+              <p>«Занятия активные, проходят с использованием разных методических приёмов, задаются домашние задания, есть возможность онлайн видеть динамику и результат ребёнка. Занимаемся больше полугода. Результатом довольны.»</p>
+              <div class="testimonial-author">Марина, мама</div>
+            </div>
+            <div class="testimonial-card">
+              <p>«Грамотная речь, хороший подбор материала, много английского на уроке. Ребёнок занимается год, при возможности берём дополнительные занятия.»</p>
+              <div class="testimonial-author">Сергей, папа</div>
+            </div>
+            <div class="testimonial-card">
+              <p>«Занимаемся в паре, больше разговорной практики, задания интереснее. Легче говорить, когда ты не один!»</p>
+              <div class="testimonial-author">Дарина, 10 класс</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-nav">
+          <button class="testimonial-btn" onclick="slideTestimonials(-1)">←</button>
+          <button class="testimonial-btn" onclick="slideTestimonials(1)">→</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2><span>❓</span> Частые вопросы</h2>
+      <div class="card faq-card">
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <h4>Сколько длится обучение? <span class="faq-toggle-icon">+</span></h4>
+          <div class="faq-answer">
+            <p>Зависит от цели. Первые результаты обычно видны через 2–3 недели, а дальше работаем столько, сколько нужно для вашего уровня и задач.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <h4>Можно ли заниматься с телефона? <span class="faq-toggle-icon">+</span></h4>
+          <div class="faq-answer">
+            <p>Да, если нет возможности подключиться с ноутбука или ПК — телефон или планшет подойдёт.</p>
+            <p>Чтобы было удобно, желательно иметь:</p>
+            <ul>
+              <li>стабильный интернет;</li>
+              <li>наушники;</li>
+              <li>возможность видеть экран (Zoom/демонстрация).</li>
+            </ul>
+            <p>Но если есть выбор, компьютер всё же удобнее для заданий и разговорной практики.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <h4>Можно заниматься в паре? <span class="faq-toggle-icon">+</span></h4>
+          <div class="faq-answer">
+            <p>Конечно! Формат в паре подходит тем, кому проще говорить и учиться вместе с другом или напарником. Это больше практики, темпа и живого общения.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <h4>Как проходит пробный урок? <span class="faq-toggle-icon">+</span></h4>
+          <div class="faq-answer">
+            <p>Пробный — бесплатный. Мы знакомимся, определяем уровень, цели, пробуем разные задания. По итогам я даю рекомендации и предлагаю формат обучения.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <h4>Нужны ли учебники? <span class="faq-toggle-icon">+</span></h4>
+          <div class="faq-answer">
+            <p>Нет. Я сама подбираю материалы: видео, диалоги, упражнения, платформы, задания из учебников и ФИПИ (если нужна подготовка к ОГЭ/ЕГЭ).</p>
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <h4>Что если у ученика «не получается»? <span class="faq-toggle-icon">+</span></h4>
+          <div class="faq-answer">
+            <p>Это нормально. Я объясняю материал простым языком, даю время и поддержку. Мы работаем в темпе ученика — без давления, но с результатом.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <h4>Сколько домашки будет? <span class="faq-toggle-icon">+</span></h4>
+          <div class="faq-answer">
+            <p>По желанию, но обычно немного: короткие задания, видео, мини‑практика на 15–20 минут.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacts">
+      <h2><span>📬</span> Контакты</h2>
+      <div class="contacts-card">
+        <p class="contacts-lead">Хотите обсудить цели, программу или задать вопрос? Пишите, буду рада помочь!</p>
+
+        <h3>Личные контакты</h3>
+        <p>Telegram: <a href="https://t.me/DinaraEng" target="_blank">t.me/DinaraEng</a></p>
+        <p>ВКонтакте: <a href="https://vk.com/id43540516" target="_blank">vk.com/id43540516</a></p>
+
+        <h3>Мои ресурсы</h3>
+        <p>Telegram‑канал: <a href="https://t.me/master_english_dinara" target="_blank">t.me/master_english_dinara</a></p>
+        <p>Группа ВКонтакте: <a href="https://vk.com/dinaraenglish" target="_blank">vk.com/dinaraenglish</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2025 Динара | Master English</span>
+    </footer>
+  </div>
+
+  <script>
+    function slideTestimonials(direction) {
+      const track = document.querySelector(".testimonial-track");
+      if (!track) return;
+      const scrollAmount = 360 * direction;
+      track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+
+    function toggleFAQ(item) {
+      const wasOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item").forEach((i) => i.classList.remove("open"));
+      if (!wasOpen) {
+        item.classList.add("open");
+      }
+    }
+  </script>
+</body>
+</html>
