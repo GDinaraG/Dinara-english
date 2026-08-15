@@ -37,6 +37,141 @@
       background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), rgba(245, 243, 255, 0.94));
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .section,
+    header {
+      scroll-margin-top: 88px;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .site-nav-inner {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .site-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: #111827;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+    }
+
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+    }
+
+    .site-nav-links a {
+      color: #4b5563;
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .site-nav-links a:hover,
+    .site-nav-links a:focus-visible {
+      color: #4f46e5;
+    }
+
+    .site-nav-links .site-nav-cta {
+      padding: 0.48rem 0.9rem;
+      border: none;
+      border-radius: 999px;
+      background: #4f46e5;
+      color: #ffffff;
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(79, 70, 229, 0.25);
+    }
+
+    .site-nav-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 1px solid rgba(124, 58, 237, 0.16);
+      border-radius: 12px;
+      background: #ffffff;
+      color: #312e81;
+      font-size: 1.35rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    @media (max-width: 760px) {
+      .site-nav {
+        padding: 0.55rem 0.75rem;
+      }
+
+      .site-nav-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .site-nav-links {
+        position: absolute;
+        top: calc(100% + 0.55rem);
+        left: 0;
+        right: 0;
+        display: none;
+        padding: 0.75rem;
+        border: 1px solid rgba(124, 58, 237, 0.13);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+      }
+
+      .site-nav-links.open {
+        display: grid;
+      }
+
+      .site-nav-links a,
+      .site-nav-links .site-nav-cta {
+        width: 100%;
+        padding: 0.7rem 0.8rem;
+        text-align: left;
+      }
+
+      .site-nav-links .site-nav-cta {
+        margin-top: 0.2rem;
+        text-align: center;
+      }
+    }
+
     header {
       padding: 2.5rem 1rem 2.2rem;
     }
@@ -1272,7 +1407,24 @@
 </head>
 <body>
   <div class="overlay">
-    <header>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <div class="site-nav-inner">
+        <a class="site-brand" href="#top" aria-label="Dinara English - в начало страницы">
+          <img src="favicon-32x32.png" alt="">
+          <span>Dinara English</span>
+        </a>
+        <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav-links" aria-label="Открыть меню">☰</button>
+        <div class="site-nav-links" id="site-nav-links">
+          <a href="#about">Обо мне</a>
+          <a href="#lesson-examples">Занятия</a>
+          <a href="#formats">Форматы и цены</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#faq">Вопросы</a>
+          <button class="site-nav-cta" type="button" onclick="openContactDialog()">Записаться</button>
+        </div>
+      </div>
+    </nav>
+    <header id="top">
       <div class="header-inner">
         <div>
           <div class="badge"><span class="badge-dot"></span> Онлайн-репетитор английского</div>
@@ -1688,6 +1840,33 @@
   </div>
 
   <script>
+    const siteNav = document.querySelector(".site-nav");
+    const siteNavToggle = document.querySelector(".site-nav-toggle");
+    const siteNavLinks = document.getElementById("site-nav-links");
+
+    function setSiteNavOpen(isOpen) {
+      siteNavLinks.classList.toggle("open", isOpen);
+      siteNavToggle.setAttribute("aria-expanded", String(isOpen));
+      siteNavToggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+      siteNavToggle.textContent = isOpen ? "×" : "☰";
+    }
+
+    siteNavToggle.addEventListener("click", () => {
+      setSiteNavOpen(siteNavToggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    siteNavLinks.querySelectorAll("a, button").forEach((item) => {
+      item.addEventListener("click", () => setSiteNavOpen(false));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!siteNav.contains(event.target)) setSiteNavOpen(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setSiteNavOpen(false);
+    });
+
     function slideVideos(direction) {
       const track = document.querySelector(".video-grid");
       if (!track) return;
