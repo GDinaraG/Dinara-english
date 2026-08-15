@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href="/dinara-favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
@@ -81,9 +82,30 @@
 
     header h1 {
       margin: 0 0 0.4rem;
-      font-size: 2.2rem;
-      letter-spacing: 0.01em;
+      margin-right: -1.25rem;
+      font-size: clamp(1.75rem, 2.15vw, 2.05rem);
+      letter-spacing: -0.025em;
       color: #111827;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.9rem;
+        line-height: 1.2;
+        margin-right: 0;
+        white-space: normal;
+      }
+
+      .title-divider {
+        display: none;
+      }
+
+      .title-offer {
+        display: block;
+        margin-top: 0.12rem;
+        font-size: 0.78em;
+      }
     }
 
     header p {
@@ -227,8 +249,21 @@
       gap: 0.5rem;
     }
 
-    .section h2 span {
-      font-size: 1.3rem;
+    .section-icon {
+      flex: 0 0 2.25rem;
+      display: inline-grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #f3e8ff, #e0f2fe);
+      box-shadow: inset 0 0 0 1px rgba(109, 74, 255, 0.1);
+    }
+
+    .section-icon img {
+      display: block;
+      width: 1.3rem;
+      height: 1.3rem;
     }
 
     .card {
@@ -254,11 +289,21 @@
     }
 
     .about-title {
-      font-size: 1.6rem;
+      font-size: clamp(1.38rem, 1.75vw, 1.5rem);
+      letter-spacing: -0.025em;
+      white-space: nowrap;
       color: var(--purple);
       margin-top: 0;
       margin-bottom: 0.8rem;
       font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .about-title {
+        font-size: 1.45rem;
+        line-height: 1.25;
+        white-space: normal;
+      }
     }
 
     .about-text p {
@@ -279,6 +324,38 @@
 
     .about-list li {
       margin-bottom: 0.25rem;
+    }
+
+    .about-position {
+      margin: 0 0 1.25rem;
+      font-size: 1.02rem;
+      color: #374151;
+    }
+
+    .about-timeline {
+      display: grid;
+      gap: 0.72rem;
+      margin-top: 1rem;
+    }
+
+    .about-fact {
+      padding-left: 1rem;
+      border-left: 3px solid #c4b5fd;
+    }
+
+    .about-fact strong {
+      display: block;
+      color: #111827;
+      font-size: 0.93rem;
+      line-height: 1.35;
+    }
+
+    .about-fact span {
+      display: block;
+      margin-top: 0.12rem;
+      color: #4b5563;
+      font-size: 0.88rem;
+      line-height: 1.4;
     }
 
     .about-photo-block {
@@ -311,6 +388,135 @@
       height: auto;
     }
 
+    .lesson-examples-card {
+      padding: 1.25rem;
+    }
+
+    .lesson-tabs {
+      display: flex;
+      gap: 0.65rem;
+      margin-bottom: 1.1rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .lesson-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .lesson-tab {
+      flex: 0 0 auto;
+      border: 1px solid rgba(79, 70, 229, 0.18);
+      border-radius: 999px;
+      padding: 0.65rem 1rem;
+      background: #eef2ff;
+      color: #4338ca;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .lesson-tab[aria-selected="true"] {
+      color: #fff;
+      background: linear-gradient(135deg, #6d4aff, #4338ca);
+      box-shadow: 0 8px 18px rgba(79, 70, 229, 0.25);
+    }
+
+    .lesson-panel[hidden] {
+      display: none;
+    }
+
+    .lesson-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .lesson-example {
+      margin: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #eef6ff;
+      border: 1px solid rgba(129, 140, 248, 0.2);
+    }
+
+    .lesson-example button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+    }
+
+    .lesson-example img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .lesson-note {
+      margin: 1rem 0 0;
+      color: #4b5563;
+      font-size: 0.88rem;
+    }
+
+    .lesson-dialog {
+      width: min(92vw, 780px);
+      padding: 0;
+      border: 0;
+      border-radius: 18px;
+      background: transparent;
+      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.45);
+    }
+
+    .lesson-dialog::backdrop {
+      background: rgba(15, 23, 42, 0.78);
+    }
+
+    .lesson-dialog img {
+      display: block;
+      width: 100%;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .lesson-dialog-close {
+      position: absolute;
+      top: 0.65rem;
+      right: 0.65rem;
+      width: 2.4rem;
+      height: 2.4rem;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(17, 24, 39, 0.82);
+      color: #fff;
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      .lesson-examples-card {
+        padding: 1rem;
+      }
+
+      .lesson-gallery {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+        padding-bottom: 0.65rem;
+      }
+
+      .lesson-example {
+        flex: 0 0 82%;
+        scroll-snap-align: start;
+      }
+    }
+
     .price-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -326,6 +532,8 @@
       position: relative;
       overflow: hidden;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .price-card::after {
@@ -367,6 +575,13 @@
       font-size: 0.78rem;
       color: #4338ca;
       font-weight: 500;
+      min-height: 2.9rem;
+      box-sizing: border-box;
+      align-self: flex-start;
+    }
+
+    .price-card--tagged .price-pill {
+      max-width: calc(100% - 7.25rem);
     }
 
     .price-main {
@@ -404,6 +619,33 @@
       color: #22c55e;
     }
 
+    .price-note {
+      margin: 0.8rem 0 0;
+      color: #4b5563;
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .price-cta {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: auto;
+      padding: 0.7rem 1.2rem;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #6d4aff, #4338ca);
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(79, 70, 229, 0.25);
+      align-self: flex-start;
+      transform: translateY(0.4rem);
+    }
+
     .ribbon-tag {
       position: absolute;
       top: 12px;
@@ -417,17 +659,115 @@
       box-shadow: 0 10px 20px rgba(248, 113, 22, 0.4);
     }
 
-    .video-grid {
+    .movies-offer {
+      position: relative;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 1.4rem;
+      padding: 1.15rem 1.3rem;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 18px;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.96), rgba(237, 233, 254, 0.95) 55%, rgba(224, 242, 254, 0.95));
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.07);
+      overflow: hidden;
+    }
+
+    .movies-offer-icon {
+      display: grid;
+      place-items: center;
+      width: 3.3rem;
+      height: 3.3rem;
+      border-radius: 16px;
+      background: #111827;
+      font-size: 1.65rem;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+    }
+
+    .movies-offer-label {
+      display: inline-block;
+      margin-bottom: 0.18rem;
+      color: #7c3aed;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .movies-offer h3 {
+      margin: 0;
+      color: #111827;
+      font-size: 1.15rem;
+    }
+
+    .movies-offer p {
+      margin: 0.3rem 0 0;
+      color: #4b5563;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .movies-offer-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.72rem 1.1rem;
+      border-radius: 999px;
+      background: #111827;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.2);
+    }
+
+    @media (max-width: 700px) {
+      .movies-offer {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.85rem;
+      }
+
+      .movies-offer-link {
+        grid-column: 1 / -1;
+        width: 100%;
+      }
+    }
+
+    .video-carousel {
+      position: relative;
+    }
+
+    .video-grid {
+      display: flex;
       gap: 1.3rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 0.15rem 0.1rem 0.65rem;
+      cursor: grab;
+      user-select: none;
+      touch-action: pan-x pan-y;
+    }
+
+    .video-grid.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+      scroll-snap-type: none;
+    }
+
+    .video-grid::-webkit-scrollbar {
+      display: none;
     }
 
     .video-card {
+      flex: 0 0 calc((100% - 2.6rem) / 3);
       background: rgba(255, 255, 255, 0.94);
       border-radius: 16px;
       padding: 0.9rem;
       box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      scroll-snap-align: start;
     }
 
     .video-card iframe {
@@ -445,8 +785,56 @@
       color: #374151;
     }
 
+    .video-nav {
+      position: absolute;
+      top: 50%;
+      left: -1rem;
+      right: -1rem;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .video-nav button {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #4b5563;
+      font-size: 1.2rem;
+      cursor: pointer;
+      pointer-events: auto;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.16);
+    }
+
+    @media (max-width: 900px) {
+      .video-card {
+        flex-basis: calc((100% - 1.3rem) / 2);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .video-carousel {
+        padding-left: 1rem;
+        padding-right: 0;
+        overflow: hidden;
+      }
+
+      .video-card {
+        flex-basis: 86%;
+      }
+
+      .video-nav {
+        display: none;
+      }
+    }
+
     .testimonial-wrapper {
       position: relative;
+      background: linear-gradient(135deg, rgba(248, 245, 255, 0.97), rgba(237, 247, 255, 0.97) 58%, rgba(245, 255, 250, 0.96));
+      border: 1px solid rgba(129, 140, 248, 0.14);
     }
 
     .testimonial-slider {
@@ -458,54 +846,130 @@
       gap: 1.2rem;
       overflow-x: auto;
       scroll-behavior: smooth;
-      padding-bottom: 0.4rem;
+      padding: 0.2rem 0.1rem 0.65rem;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+      touch-action: pan-x pan-y;
+    }
+
+    .testimonial-track.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+      scroll-snap-type: none;
     }
 
     .testimonial-track::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .testimonial-track::-webkit-scrollbar-thumb {
-      background: #d1d5db;
-      border-radius: 999px;
+      display: none;
     }
 
     .testimonial-card {
       min-width: 320px;
-      max-width: 340px;
+      width: 340px;
       border-radius: 16px;
-      padding: 1rem 1.1rem 0.9rem;
+      padding: 0.8rem;
       box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-      border-left: 4px solid #a855f7;
+      border: 1px solid rgba(168, 85, 247, 0.16);
+      background: linear-gradient(145deg, #ffffff, #f8f7ff);
       font-size: 0.92rem;
-    }
-    .testimonial-card:nth-child(1){background: #fef6ff;}
-    .testimonial-card:nth-child(2){background: #f5faff;}
-    .testimonial-card:nth-child(3){background: #f7fff5;}
-    .testimonial-card:nth-child(4){background: #fffaf5;}
-    .testimonial-card:nth-child(5){background: #f5f7ff;}
-    .testimonial-card:nth-child(6){background: #fff5fb;}
-    .testimonial-card:nth-child(7){background: #f5fffe;}
-    .testimonial-card:nth-child(8){background: #fffef5;}
-    .testimonial-card:nth-child(9){background: #f6f5ff;
-      min-width: 320px;
-      max-width: 340px;
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 16px;
-      padding: 1rem 1.1rem 0.9rem;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-      border-left: 4px solid #a855f7;
-      font-size: 0.92rem;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
     }
 
-    .testimonial-card p {
+    .testimonial-image-button {
+      display: block;
+      width: 100%;
+      height: 150px;
+      padding: 0;
+      border: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      cursor: zoom-in;
+    }
+
+    .testimonial-image-button img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .testimonial-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 0.85rem 0.25rem 0.2rem;
+    }
+
+    .testimonial-label {
+      align-self: flex-start;
+      margin-bottom: 0.45rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #ede9fe;
+      color: #6d28d9;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .testimonial-quote {
       margin: 0;
+      color: #111827;
+      line-height: 1.48;
+      font-weight: 600;
     }
 
-    .testimonial-author {
-      margin-top: 0.6rem;
-      font-weight: 600;
-      color: #111827;
+    .testimonial-source {
+      margin-top: auto;
+      padding-top: 0.65rem;
+      color: #6b7280;
+      font-size: 0.78rem;
+    }
+
+    .testimonial-note {
+      margin: 0;
+      color: #6b7280;
+      font-size: 0.84rem;
+    }
+
+    .testimonial-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    .testimonial-cta {
+      flex: 0 0 auto;
+      padding: 0.7rem 1.25rem;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #6d4aff, #4338ca);
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(79, 70, 229, 0.25);
+    }
+
+    @media (max-width: 600px) {
+      .testimonial-card {
+        min-width: 84%;
+        width: 84%;
+      }
+
+      .testimonial-footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .testimonial-cta {
+        width: 100%;
+      }
     }
 
     .testimonial-nav {
@@ -542,11 +1006,12 @@
 
     .faq-card {
       background: rgba(249, 250, 251, 0.96);
+      padding: 1.15rem 1.35rem;
     }
 
     .faq-item {
-      margin-bottom: 0.7rem;
-      padding: 0.5rem 0.5rem;
+      margin-bottom: 0.2rem;
+      padding: 0.45rem 0.5rem;
       border-radius: 12px;
       transition: background 0.25s ease, transform 0.2s ease;
       cursor: pointer;
@@ -558,13 +1023,17 @@
     }
 
     .faq-item h4 {
-      margin: 0 0 0.3rem;
+      margin: 0;
       color: #7c3aed;
       font-size: 1.02rem;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       gap: 0.5rem;
+    }
+
+    .faq-item.open h4 {
+      margin-bottom: 0.3rem;
     }
 
     .faq-answer {
@@ -575,20 +1044,49 @@
       font-size: 0.95rem;
     }
 
+    .faq-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.9rem;
+    }
+
+    .faq-cta {
+      padding: 0.7rem 1.25rem;
+      border: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #6d4aff, #4338ca);
+      color: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(79, 70, 229, 0.25);
+    }
+
+    @media (max-width: 600px) {
+      .faq-footer,
+      .faq-cta {
+        width: 100%;
+      }
+    }
+
     .faq-item.open .faq-answer {
       max-height: 500px;
       opacity: 1;
     }
 
     .faq-toggle-icon {
-      font-size: 1.1rem;
+      font-size: 0;
       color: #7c3aed;
       margin-left: 0.2rem;
-      transition: transform 0.3s ease;
     }
 
-    .faq-item.open .faq-toggle-icon {
-      transform: rotate(180deg);
+    .faq-toggle-icon::before {
+      content: "+";
+      font-size: 1.1rem;
+    }
+
+    .faq-item.open .faq-toggle-icon::before {
+      content: "−";
     }
 
     .faq-item ul {
@@ -600,32 +1098,164 @@
     }
 
     .contacts-card {
-      font-size: 1.02rem;
-      line-height: 1.7;
+      font-size: 1rem;
+      line-height: 1.5;
       text-align: left;
-      max-width: 480px;
+      max-width: 760px;
       margin: 0 auto 2rem;
-
       background: linear-gradient(135deg, #f3ecff, #e8f7ff, #f5fff3);
-      padding: 0.8rem 1rem 1rem;
+      padding: 1.35rem 1.45rem 1.45rem;
       border-radius: 18px;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
     }
 
     .contacts-lead {
       font-weight: 600;
-      font-size: 1.4rem;
-      margin: 0 0 0.8rem;
+      font-size: 1.25rem;
+      margin: 0 0 1rem;
+      color: #1f2937;
     }
 
     .contacts-card h3 {
       color: #6633cc;
-      margin: 0.4rem 0 0.4rem;
+      margin: 0 0 0.65rem;
       font-size: 1.02rem;
     }
 
-    .contacts-card p {
-      margin: 0.15rem 0;
+    .contact-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .contact-option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 3rem;
+      padding: 0.7rem 0.85rem;
+      border-radius: 14px;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .contact-option:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(15, 23, 42, 0.2);
+    }
+
+    .contact-option--max {
+      background: linear-gradient(135deg, #6d5dfc, #315efb);
+    }
+
+    .contact-option--telegram {
+      background: linear-gradient(135deg, #2aabee, #168acd);
+    }
+
+    .contact-option--vk {
+      background: linear-gradient(135deg, #2787f5, #1769c2);
+    }
+
+    .contact-resources {
+      margin-top: 1.15rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(99, 102, 241, 0.15);
+    }
+
+    .contact-resources p {
+      margin: 0.25rem 0;
+      color: #4b5563;
+      font-size: 0.9rem;
+    }
+
+    .contact-resources .contact-resources-intro {
+      margin-bottom: 0.65rem;
+    }
+
+    .contact-resources a {
+      color: #4338ca;
+    }
+
+    .contact-dialog {
+      width: min(92vw, 480px);
+      padding: 0;
+      border: 0;
+      border-radius: 22px;
+      background: transparent;
+      box-shadow: 0 28px 80px rgba(15, 23, 42, 0.35);
+    }
+
+    .contact-dialog::backdrop {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(3px);
+    }
+
+    .contact-dialog-inner {
+      position: relative;
+      padding: 1.5rem;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #ffffff, #f3ecff 58%, #e8f7ff);
+    }
+
+    .contact-dialog h2 {
+      margin: 0 2.5rem 0.45rem 0;
+      color: #111827;
+      font-size: 1.35rem;
+      line-height: 1.25;
+    }
+
+    .contact-dialog p {
+      margin: 0 0 1rem;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+
+    .contact-dialog .contact-options {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-dialog-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      display: grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      color: #374151;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 5px 14px rgba(15, 23, 42, 0.12);
+    }
+
+    @media (max-width: 600px) {
+      .contacts-card {
+        padding: 1.1rem;
+      }
+
+      .contact-options {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-dialog {
+        width: 100%;
+        max-width: none;
+        margin: auto 0 0;
+        border-radius: 22px 22px 0 0;
+      }
+
+      .contact-dialog-inner {
+        padding: 1.35rem 1rem calc(1.2rem + env(safe-area-inset-bottom));
+        border-radius: 22px 22px 0 0;
+      }
     }
 
     footer {
@@ -646,29 +1276,26 @@
       <div class="header-inner">
         <div>
           <div class="badge"><span class="badge-dot"></span> Онлайн-репетитор английского</div>
-          <h1>Динара | Dinara English</h1>
-          <p class="header-highlight">Онлайн занятия для подростков и взрослых, которые боятся ошибок, теряют мотивацию и не могут начать говорить.</p>
-          <p class="header-sub">10+ лет опыта. Спокойный подход. Поддержка, а не давление.</p>
+          <h1><span class="title-name">Динара</span> <span class="title-divider">|</span> <span class="title-offer">Английский для 5–11 классов</span></h1>
+          <p class="header-highlight">Помогаю школьникам разобраться с непонятными темами, закрыть старые пробелы и использовать английский в речи.</p>
+          <p class="header-sub">Преподаю с 2014 года. Объясняю спокойно и не стыжу за темы, которые ребёнок не знает или забыл.</p>
           <div class="header-tags">
-            <span class="tag tag-outline">Подростки</span>
-            <span class="tag tag-outline">Взрослые</span>
-            <span class="tag tag-outline">Подготовка к ОГЭ / ЕГЭ</span>
+            <span class="tag tag-outline">Школьная программа</span>
+            <span class="tag tag-outline">Разговорная практика</span>
+            <span class="tag tag-outline">Подготовка к ОГЭ</span>
           </div>
           <div class="cta-row">
-            <button class="cta-main" onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})">
-              <span>✉</span> Записаться на пробный урок
+            <button class="cta-main" onclick="openContactDialog()">
+              <span>✉</span> Записаться на бесплатную диагностику
             </button>
-<button class="cta-main" onclick="window.open('https://movies.dinara-english.ru','_blank')">
-  <span>🎬</span> Английский по фильмам
-</button>
-            <div class="cta-subtext">Бесплатный пробный | от 1500₽ за занятие</div>
+            <div class="cta-subtext">Мы познакомимся, определим уровень и обсудим план занятий.</div>
           </div>
         </div>
         <div class="header-side">
           <div class="header-photo-wrap">
             <div class="header-photo-glow"></div>
             <div class="header-photo">
-              <img src="dinara-photo3.png" alt="Динара — онлайн-репетитор английского" style="width:100%; height:100%; object-fit: cover; object-position: top;" />
+              <img src="dinara-photo3.png" alt="Динара - онлайн-репетитор английского" style="width:100%; height:100%; object-fit: cover; object-position: top;" />
               
             </div>
           </div>
@@ -677,146 +1304,276 @@
     </header>
 
     <section class="section" id="about">
-      <h2><span>👩‍🏫</span> Обо мне</h2>
+      <h2><span class="section-icon" aria-hidden="true"><img src="assets/icons/graduation-cap.svg" alt=""></span> Обо мне</h2>
       <div class="card about-layout">
         <div class="about-text">
-          <h3 class="about-title">Вместе легче!</h3>
-          <p><strong>Я работаю с подростками и взрослыми, которым трудно включиться в английский:</strong> всё забывается, страшно говорить, нет системы и прогресса.</p>
-          <p>На занятиях мы:</p>
-          <ul class="about-list">
-            <li>учимся говорить с уверенностью, а не только выполнять задания;</li>
-            <li>разбираем грамматику простыми словами и сразу применяем её в речи;</li>
-            <li>используем живые материалы: видео, фразы из сериалов, диалоги, квесты;</li>
-            <li>развиваем навыки для школы, ОГЭ/ЕГЭ и жизни, с пониманием, а не просто заучиванием.</li>
-          </ul>
-          <p>Я строю доверие с учениками: здесь можно ошибаться, задавать вопросы, быть собой и двигаться вперёд с ощущением, что всё получается.</p>
-          <p><strong>Моя задача — не только объяснить, но и показать, что английский может быть доступным, логичным и по-настоящему интересным.</strong></p>
+          <h3 class="about-title">Я не обещаю, что английский вдруг станет лёгким</h3>
+          <p class="about-position">Но могу спокойно объяснить непонятное, собрать разрозненные знания в систему и показать ребёнку, что у него получается лучше, чем он думает.</p>
+          <div class="about-timeline">
+            <div class="about-fact">
+              <strong>2009–2014 · Марийский государственный университет</strong>
+              <span>Учитель английского и французского языков</span>
+            </div>
+            <div class="about-fact">
+              <strong>2018 · Cambridge TKT</strong>
+              <span>Экзамен по методике, планированию уроков, подбору материалов и организации обучения</span>
+            </div>
+            <div class="about-fact">
+              <strong>2017–2018 · Языковая школа LinguaMan</strong>
+              <span>Преподаватель английского языка</span>
+            </div>
+            <div class="about-fact">
+              <strong>2020–2021 · Elephant Games</strong>
+              <span>Переводчик мобильных и компьютерных игр</span>
+            </div>
+            <div class="about-fact">
+              <strong>2023 · Повышение квалификации</strong>
+              <span>Подготовка школьников к ОГЭ по английскому языку</span>
+            </div>
+            <div class="about-fact">
+              <strong>2024–2025 · Обучение продвинутому английскому и методике преподавания</strong>
+            </div>
+          </div>
         </div>
         <div class="about-photo-block">
           <div class="about-photo-bg"></div>
           <div class="about-photo-img">
-            <img src="dinara-photo5.png" alt="Динара — репетитор английского" />
+            <img src="dinara-photo1.png" alt="Динара работает за ноутбуком" />
           </div>
         </div>
       </div>
     </section>
 
+    <section class="section" id="lesson-examples">
+      <h2><span class="section-icon" aria-hidden="true"><img src="assets/icons/monitor-play.svg" alt=""></span> Как проходят занятия</h2>
+      <div class="card lesson-examples-card">
+        <div class="lesson-tabs" role="tablist" aria-label="Примеры занятий">
+          <button class="lesson-tab" type="button" role="tab" aria-selected="true" aria-controls="lessons-school" id="tab-school">Занятия для школьников</button>
+          <button class="lesson-tab" type="button" role="tab" aria-selected="false" aria-controls="lessons-movies" id="tab-movies">Уроки по фильмам</button>
+          <button class="lesson-tab" type="button" role="tab" aria-selected="false" aria-controls="lessons-oge" id="tab-oge">Подготовка к ОГЭ</button>
+        </div>
+
+        <div class="lesson-panel" id="lessons-school" role="tabpanel" aria-labelledby="tab-school">
+          <div class="lesson-gallery">
+            <figure class="lesson-example">
+              <button type="button" class="lesson-image-button" aria-label="Увеличить пример урока на онлайн-платформах"><img src="assets/lesson-examples/school-platforms.jpg" alt="Урок английского на платформах ProgressMe и Wordwall" loading="lazy"></button>
+            </figure>
+            <figure class="lesson-example">
+              <button type="button" class="lesson-image-button" aria-label="Увеличить пример грамматической игры"><img src="assets/lesson-examples/school-grammar.jpg" alt="Игровые задания для тренировки грамматики" loading="lazy"></button>
+            </figure>
+            <figure class="lesson-example">
+              <button type="button" class="lesson-image-button" aria-label="Увеличить пример домашней работы"><img src="assets/lesson-examples/school-homework.jpg" alt="Интерактивная домашняя работа и повторение слов" loading="lazy"></button>
+            </figure>
+          </div>
+        </div>
+
+        <div class="lesson-panel" id="lessons-movies" role="tabpanel" aria-labelledby="tab-movies" hidden>
+          <div class="lesson-gallery">
+            <figure class="lesson-example">
+              <button type="button" class="lesson-image-button" aria-label="Увеличить пример просмотра эпизода"><img src="assets/lesson-examples/movies-watch.jpg" alt="Эпизод сериала на английском с заданиями" loading="lazy"></button>
+            </figure>
+            <figure class="lesson-example">
+              <button type="button" class="lesson-image-button" aria-label="Увеличить пример работы с лексикой"><img src="assets/lesson-examples/movies-vocabulary.jpg" alt="Живые слова и выражения из фильма" loading="lazy"></button>
+            </figure>
+            <figure class="lesson-example">
+              <button type="button" class="lesson-image-button" aria-label="Увеличить пример обсуждения сюжета"><img src="assets/lesson-examples/movies-discussion.jpg" alt="Обсуждение героев и сюжета сериала" loading="lazy"></button>
+            </figure>
+          </div>
+        </div>
+
+        <div class="lesson-panel" id="lessons-oge" role="tabpanel" aria-labelledby="tab-oge" hidden>
+          <div class="lesson-gallery">
+            <figure class="lesson-example">
+              <button type="button" class="lesson-image-button" aria-label="Увеличить пример тематического урока ОГЭ"><img src="assets/lesson-examples/oge-topics.jpg" alt="Тематический урок для подготовки к ОГЭ" loading="lazy"></button>
+            </figure>
+            <figure class="lesson-example">
+              <button type="button" class="lesson-image-button" aria-label="Увеличить пример заданий из марафонов ОГЭ"><img src="assets/lesson-examples/oge-practice.jpg" alt="Марафоны с заданиями из банка ФИПИ" loading="lazy"></button>
+            </figure>
+            <figure class="lesson-example">
+              <button type="button" class="lesson-image-button" aria-label="Увеличить пример динамики пробных экзаменов"><img src="assets/lesson-examples/oge-progress.jpg" alt="Таблица с ростом результата пробных экзаменов с 47 до 59 баллов" loading="lazy"></button>
+            </figure>
+          </div>
+        </div>
+
+        <p class="lesson-note">Нажмите на карточку, чтобы рассмотреть задание. На телефоне карточки можно листать вбок.</p>
+      </div>
+    </section>
+
+    <dialog class="lesson-dialog" id="lesson-dialog" aria-label="Увеличенное изображение">
+      <button class="lesson-dialog-close" type="button" aria-label="Закрыть">×</button>
+      <img src="" alt="">
+    </dialog>
+
     <section class="section" id="formats">
-      <h2><span>📚</span> Форматы и цены</h2>
+      <h2><span class="section-icon" aria-hidden="true"><img src="assets/icons/tag.svg" alt=""></span> Форматы и цены</h2>
       <div class="price-cards">
-        <div class="price-card">
-          <span class="ribbon-tag" style="background:#22c55e; box-shadow:0 10px 20px rgba(34,197,94,0.4);">Хит</span>
+        <div class="price-card price-card--tagged">
+          <span class="ribbon-tag" style="background:#22c55e; box-shadow:0 10px 20px rgba(34,197,94,0.4);">Чаще выбирают</span>
           <span class="price-pill">Для тех, кто хочет личное сопровождение</span>
           <h3>👤 Индивидуальные занятия</h3>
-          <p class="price-main">1500 ₽ <span>/ 1 урок</span></p>
+          <p class="price-main">1500 ₽ <span>· 50 минут</span></p>
           <ul class="price-list">
-            <li>Программа под вашу цель: общий английский, экзамены, разговорный.</li>
-            <li>Разбираем пробелы и переводим знания в уверенный уровень.</li>
-            <li>Отрабатываем лексику и грамматику сразу в речи, а не только в тетради.</li>
-            <li>Учимся не знать наизусть, а использовать английский в реальных ситуациях.</li>
+            <li>Определяем пробелы и выстраиваем программу под ребёнка.</li>
+            <li>Разбираем школьные темы понятным языком.</li>
+            <li>Тренируем лексику и грамматику сразу в речи.</li>
           </ul>
+          <button class="price-cta" type="button" onclick="openContactDialog()">Записаться</button>
         </div>
         <div class="price-card">
-          <span class="price-pill">Когда важна поддержка и больше общения</span>
+          <span class="price-pill">Когда важна поддержка<br>и больше общения</span>
           <h3>👥 Занятия в паре</h3>
-          <p class="price-main">1000 ₽ <span>/ с человека</span></p>
+          <p class="price-main">1000 ₽ <span>с человека · 50 минут</span></p>
           <ul class="price-list">
             <li>Больше практики: диалоги, игры, обсуждения между учениками.</li>
             <li>Формат ускоряет прогресс: меньше стеснения, больше общения.</li>
-            <li>Пара учит слушать, реагировать, поддерживать разговор, а не молчать.</li>
-            <li>Уроки + чат с заданиями - английский есть и на занятии, и в жизни.</li>
+            <li>Можно заниматься вместе с другом или одноклассником.</li>
           </ul>
+          <p class="price-note">Если пары пока нет, я подберу ученика с похожим уровнем и подходящим расписанием.</p>
+          <button class="price-cta" type="button" onclick="openContactDialog()">Записаться</button>
         </div>
-        <div class="price-card">
+        <div class="price-card price-card--tagged">
           <span class="ribbon-tag">Экзамены</span>
-          <span class="price-pill">Для тех, кто готовится к аттестации</span>
-          <h3>🎯 Подготовка к ОГЭ / ЕГЭ</h3>
-          <p class="price-main">от 1500 ₽ <span>/ урок</span></p>
+          <span class="price-pill">Для тех, кто готовится к экзамену</span>
+          <h3>🎯 Подготовка к ОГЭ</h3>
+          <p class="price-main">1600 ₽ <span>· 50 минут</span></p>
           <ul class="price-list">
-            <li>Все типы заданий: от аудирования до эссе и монолога.</li>
+            <li>Разбираем все типы заданий ОГЭ: от аудирования до письма и устной части.</li>
             <li>Объясняю, как думает эксперт: на что смотрят и что снижает балл.</li>
             <li>Готовимся по реальным материалам ФИПИ и актуальным сборникам.</li>
             <li>Пишем 3–4 пробника за курс и отслеживаем прогресс по баллам.</li>
-            <li>Даю самостоятельные тренировки через марафоны и проверенные платформы.</li>
           </ul>
+          <button class="price-cta" type="button" onclick="openContactDialog()">Записаться</button>
         </div>
+      </div>
+      <div class="movies-offer">
+        <div class="movies-offer-icon" aria-hidden="true">🎬</div>
+        <div>
+          <span class="movies-offer-label">Ещё один вариант занятий</span>
+          <h3>Английский по фильмам и сериалам</h3>
+          <p>Смотрим эпизоды, разбираем живые выражения и обсуждаем героев и сюжет. Можно заниматься с преподавателем или проходить готовые курсы самостоятельно.</p>
+        </div>
+        <a class="movies-offer-link" href="https://movies.dinara-english.ru" target="_blank" rel="noopener noreferrer">Посмотреть занятия по фильмам</a>
       </div>
     </section>
 
     <section class="section" id="videos">
-      <h2><span>🎥</span> Видео с уроков</h2>
-      <div class="card">
+      <h2><span class="section-icon" aria-hidden="true"><img src="assets/icons/video.svg" alt=""></span> Видео с уроков</h2>
+      <div class="card video-carousel">
         <div class="video-grid">
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239076&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239076&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
             <p><strong>Что делал вчера? Учим Past Simple в диалоге</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239074&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
-            <p><strong>Квест — КОТОстрофа: кто виноват?</strong></p>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239074&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Квест - КОТОстрофа: кто виноват?</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239063&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239063&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
             <p><strong>Приключение на поезде на английском</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239040&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239040&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
             <p><strong>Present Simple в реальных примерах | Мини-урок</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239024&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239024&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
             <p><strong>Профессии, которые вдохновляют</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239022&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239022&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
             <p><strong>Английский через сериал Silverpoint</strong></p>
           </div>
+        </div>
+        <div class="video-nav" aria-label="Навигация по видео">
+          <button type="button" onclick="slideVideos(-1)" aria-label="Предыдущие видео">←</button>
+          <button type="button" onclick="slideVideos(1)" aria-label="Следующие видео">→</button>
         </div>
       </div>
     </section>
 
     <section class="section" id="reviews">
-      <h2><span>💬</span> Отзывы</h2>
+      <h2><span class="section-icon" aria-hidden="true"><img src="assets/icons/message-circle.svg" alt=""></span> Отзывы учеников и родителей</h2>
       <div class="card testimonial-wrapper">
         <div class="testimonial-slider">
           <div class="testimonial-track">
             <div class="testimonial-card">
-              <p>«Лучший учитель английского! Отлично объясняет и понимающие относится. Всегда терпеливо подскажет. Обучение ведётся в разных форматах, что помогает лучше усваивать информацию. Спасибо, Динара Маратовна, за упорный труд уже как несколько лет!»</p>
-              <div class="testimonial-author">Татьяна, ученица</div>
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал отзыва мамы Даши"><img src="assets/reviews/review-dasha.jpg" alt="Оригинальный отзыв мамы Даши" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Стала увереннее</span>
+                <p class="testimonial-quote">«Даша стала увереннее, а пробелы по языку постепенно восполняются»</p>
+                <span class="testimonial-source">Отзыв родителя · Telegram</span>
+              </div>
             </div>
             <div class="testimonial-card">
-              <p>«Динара всегда приводит актуальные и интересные примеры, объясняет сложные правила простым и понятным языком. Это не просто преподаватель, это настоящий наставник.»</p>
-              <div class="testimonial-author">Лина, ученица</div>
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал отзыва Марины"><img src="assets/reviews/review-marina.png" alt="Оригинальный отзыв Марины о занятиях ребёнка" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Виден результат ребёнка</span>
+                <p class="testimonial-quote">«Есть возможность онлайн видеть динамику и результат ребёнка. Результатом довольны»</p>
+                <span class="testimonial-source">Марина · Авито</span>
+              </div>
             </div>
             <div class="testimonial-card">
-              <p>«Дочь занимается с Динарой Маратовной уже несколько лет, с 5 класса. Сейчас начал заниматься и младший ребёнок. Занятия детям очень нравятся, в школе с уроками английского языка проблем нет, отлично. Занимаются не только по школьной программе (как я и просила). Занятия интенсивные, интересные, с домашними заданиями. Преподаватель всегда на связи, все вопросы решаются в кратчайшие сроки.»</p>
-              <div class="testimonial-author">Альбина, мама</div>
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал отзыва Альбины"><img src="assets/reviews/review-albina.jpg?v=2" alt="Оригинальный отзыв Альбины на Авито" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Занимаются двое детей</span>
+                <p class="testimonial-quote">«Дочь занимается с пятого класса. Сейчас начал заниматься и младший ребёнок»</p>
+                <span class="testimonial-source">Альбина · Авито</span>
+              </div>
             </div>
             <div class="testimonial-card">
-              <p>«Готовился к ОГЭ с Динарой — писали пробники, разбирали каждое задание. На экзамене не растерялся, всё было знакомо.»</p>
-              <div class="testimonial-author">Никита, выпускник</div>
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал отзыва Арины из ВКонтакте"><img src="assets/reviews/review-arina-vk.png" alt="Оригинальный отзыв Арины о занятиях английским" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Стала увереннее говорить</span>
+                <p class="testimonial-quote">«За время занятий я стала гораздо увереннее говорить на английском, нашла свои ошибки и заметила прогресс»</p>
+                <span class="testimonial-source">Арина · ВКонтакте</span>
+              </div>
             </div>
             <div class="testimonial-card">
-              <p>«Я рада, что встретила такого человека, как Динара Маратовна! Это ответственный и высокообразованный человек, который горит своим делом. Она умеет прислушаться, понять, в чём проблема, и разжевать материал по-максимуму. Мы занимались полтора года, и каждое занятие я ждала, потому что это было интересно.»</p>
-              <div class="testimonial-author">Инна, ученица</div>
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал отзыва о занятиях подростка"><img src="assets/reviews/review-teen.jpg" alt="Оригинальный отзыв родителя подростка на Авито" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Удалось заинтересовать</span>
+                <p class="testimonial-quote">«Очень сложно заинтересовать подростка, но у Динары получилось! Уже виден прогресс»</p>
+                <span class="testimonial-source">Виктория · Авито</span>
+              </div>
             </div>
             <div class="testimonial-card">
-              <p>«Динара помогает вспомнить забытый английский. Пропала боязнь разговаривать, вспоминаем и грамматику, и лексику. Проходим разные, но всегда актуальные темы. В занятия включены упражнения, чтение, аудирование и другое. Преподаватель всегда вежлив и с чувством юмора. Кажется, она сможет найти подход к любому!»</p>
-              <div class="testimonial-author">Ольга, ученица</div>
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал отзыва Сергея"><img src="assets/reviews/review-sergey.png" alt="Оригинальный отзыв Сергея о занятиях ребёнка" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Много английского на уроке</span>
+                <p class="testimonial-quote">«Грамотная речь, хороший подбор материала, много английского на уроке»</p>
+                <span class="testimonial-source">Сергей · Авито</span>
+              </div>
             </div>
             <div class="testimonial-card">
-              <p>«Занятия активные, проходят с использованием разных методических приёмов, задаются домашние задания, есть возможность онлайн видеть динамику и результат ребёнка. Занимаемся больше полугода. Результатом довольны.»</p>
-              <div class="testimonial-author">Марина, мама</div>
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал отзыва о школьном результате"><img src="assets/reviews/review-sasha.jpg" alt="Оригинальный отзыв о результате Саши" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Результат в школе</span>
+                <p class="testimonial-quote">«У Саши вышла пятёрка. Стал увереннее и меньше переживает за английский»</p>
+                <span class="testimonial-source">Отзыв родителя · Telegram</span>
+              </div>
             </div>
             <div class="testimonial-card">
-              <p>«Грамотная речь, хороший подбор материала, много английского на уроке. Ребёнок занимается год, при возможности берём дополнительные занятия.»</p>
-              <div class="testimonial-author">Сергей, папа</div>
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал результата ОГЭ"><img src="assets/reviews/review-oge.jpg" alt="Оригинальное сообщение о результате ОГЭ 66 баллов из 68" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">ОГЭ · 66 из 68</span>
+                <p class="testimonial-quote">66 баллов из 68 возможных на ОГЭ по английскому</p>
+                <span class="testimonial-source">Результат ученицы · Telegram</span>
+              </div>
             </div>
             <div class="testimonial-card">
-              <p>«Занимаемся в паре, больше разговорной практики, задания интереснее. Легче говорить, когда ты не один!»</p>
-              <div class="testimonial-author">Дарина, ученица</div>
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал отзыва об уроках по фильмам"><img src="assets/reviews/review-movies.jpg" alt="Оригинальный отзыв об уроках по сериалу" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Уроки по фильмам</span>
+                <p class="testimonial-quote">«Сама досмотрела серию - было интересно узнать, что там дальше. Все задания сделала!»</p>
+                <span class="testimonial-source">Отзыв ученицы · Telegram</span>
+              </div>
             </div>
           </div>
+        </div>
+        <div class="testimonial-footer">
+          <p class="testimonial-note">Нажмите на отзыв, чтобы прочитать его полностью.</p>
+          <button class="testimonial-cta" type="button" onclick="openContactDialog()">Записаться</button>
         </div>
         <div class="testimonial-nav">
           <button class="testimonial-btn" onclick="slideTestimonials(-1)">←</button>
@@ -826,80 +1583,104 @@
     </section>
 
     <section class="section" id="faq">
-      <h2><span>❓</span> Частые вопросы</h2>
+      <h2><span class="section-icon" aria-hidden="true"><img src="assets/icons/circle-help.svg" alt=""></span> Частые вопросы</h2>
       <div class="card faq-card">
         <div class="faq-item" onclick="toggleFAQ(this)">
           <h4>Как проходят занятия? <span class="faq-toggle-icon">+</span></h4>
           <div class="faq-answer">
-            <p>Занятия проходят в Zoom. Мы работаем на интерактивной доске, разбираем темы, тренируем грамматику и лексику и много говорим. Материалы используем под вашу цель: школьная программа, экзамены, повышение уровня или уроки по фильмам.</p>
+            <p>Занятие длится 50 минут и проходит в Zoom. Работаем на интерактивных платформах, разбираем новую тему и сразу тренируем её в заданиях и речи.</p>
           </div>
         </div>
 
         <div class="faq-item" onclick="toggleFAQ(this)">
-          <h4>Можно ли заниматься с телефона? <span class="faq-toggle-icon">+</span></h4>
+          <h4>По какой программе проходят занятия? <span class="faq-toggle-icon">+</span></h4>
           <div class="faq-answer">
-            <p>Да, если нет возможности подключиться с ноутбука или ПК — телефон или планшет подойдёт.</p>
-            <p>Чтобы было удобно, желательно иметь:</p>
-            <ul>
-              <li>стабильный интернет;</li>
-              <li>наушники;</li>
-              <li>возможность видеть экран (Zoom/демонстрация).</li>
-            </ul>
-            <p>Но если есть выбор, компьютер всё же удобнее для заданий и разговорной практики.</p>
+            <p>Зависит от цели. Можно разбирать школьную программу и закрывать пробелы, а можно заниматься на повышение общего уровня. В программу добавляю видео, разговорные и интерактивные задания.</p>
           </div>
         </div>
 
         <div class="faq-item" onclick="toggleFAQ(this)">
-          <h4>Можно заниматься в паре? <span class="faq-toggle-icon">+</span></h4>
+          <h4>Как часто нужно заниматься? <span class="faq-toggle-icon">+</span></h4>
           <div class="faq-answer">
-            <p>Конечно! Формат в паре подходит тем, кому проще говорить и учиться вместе с другом или напарником. Это больше практики, темпа и живого общения.</p>
+            <p>Обычно два раза в неделю. Так между уроками остаётся время на домашнее задание и повторение, но перерыв не получается слишком большим.</p>
           </div>
         </div>
 
         <div class="faq-item" onclick="toggleFAQ(this)">
-          <h4>Как проходит пробный урок? <span class="faq-toggle-icon">+</span></h4>
+          <h4>Как родитель узнаёт о прогрессе? <span class="faq-toggle-icon">+</span></h4>
           <div class="faq-answer">
-            <p>Пробный — бесплатный. Мы знакомимся, определяем уровень, цели, пробуем разные задания. По итогам я даю рекомендации и предлагаю формат обучения.</p>
+            <p>По запросу я пишу подробный отчёт: что мы прошли, что стало получаться лучше, над чем ещё работаем и что рекомендую. Иногда записываю для родителя видео с пояснениями.</p>
           </div>
         </div>
 
         <div class="faq-item" onclick="toggleFAQ(this)">
-          <h4>Нужны ли учебники? <span class="faq-toggle-icon">+</span></h4>
+          <h4>Как проходит бесплатная диагностика? <span class="faq-toggle-icon">+</span></h4>
           <div class="faq-answer">
-            <p>Не нужны. Я подберу для вас материалы: видео, диалоги, упражнения, задания из учебников или ФИПИ (если нужна подготовка к ОГЭ/ЕГЭ). И соберу в красивые презентации или удобную онлайн платформу.</p>
+            <p>Диагностика длится около 20 минут. Мы познакомимся, определим уровень ребёнка и обсудим цель и план занятий.</p>
           </div>
         </div>
 
         <div class="faq-item" onclick="toggleFAQ(this)">
-          <h4>Что если у ученика «не получается»? <span class="faq-toggle-icon">+</span></h4>
+          <h4>Сколько будет домашней работы? <span class="faq-toggle-icon">+</span></h4>
           <div class="faq-answer">
-            <p>Не переживайте, это нормально. Я объясняю материал простым языком, даю время и поддержку. Мы работаем в темпе ученика — без давления, но с результатом.</p>
+            <p>По договорённости. Обычно это короткие интерактивные задания на 15–20 минут для повторения пройденного.</p>
           </div>
         </div>
 
         <div class="faq-item" onclick="toggleFAQ(this)">
-          <h4>Сколько домашки будет? <span class="faq-toggle-icon">+</span></h4>
+          <h4>Нужно ли покупать учебники? <span class="faq-toggle-icon">+</span></h4>
           <div class="faq-answer">
-            <p>По желанию, обычно это короткие задания, видео или мини‑практика на 15–20 минут.</p>
+            <p>Нет. Все материалы и доступ к заданиям я предоставляю.</p>
           </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <h4>Как записаться на занятия? <span class="faq-toggle-icon">+</span></h4>
+          <div class="faq-answer">
+            <p>Нажмите кнопку «Записаться» и выберите удобный способ связи. Я отвечу на вопросы и договорюсь с вами о бесплатной диагностике.</p>
+          </div>
+        </div>
+
+        <div class="faq-footer">
+          <button class="faq-cta" type="button" onclick="openContactDialog()">Записаться</button>
         </div>
       </div>
     </section>
 
     <section class="section" id="contacts">
-      <h2><span>📬</span> Контакты</h2>
+      <h2><span class="section-icon" aria-hidden="true"><img src="assets/icons/send.svg" alt=""></span> Контакты</h2>
       <div class="contacts-card">
-        <p class="contacts-lead">Хотите обсудить цели, программу или задать вопрос? Пишите, я на связи!</p>
+        <p class="contacts-lead">Напишите мне удобным способом - отвечу на вопросы и договоримся о бесплатной диагностике.</p>
 
-        <h3>Личные контакты</h3>
-        <p>Telegram: <a href="https://t.me/DinaraEng" target="_blank">t.me/DinaraEng</a></p>
-        <p>ВКонтакте: <a href="https://vk.com/dinaraeng" target="_blank">vk.com/dinaraeng</a></p>
+        <h3>Выберите удобный способ связи</h3>
+        <div class="contact-options">
+          <a class="contact-option contact-option--max" href="https://max.ru/u/f9LHodD0cOJBxAYv1kH4C_VktHo_U9FZgNO-Ip1Wbeiz_L7MdDSBsA9UL8k" target="_blank" rel="noopener noreferrer">MAX</a>
+          <a class="contact-option contact-option--telegram" href="https://t.me/DinaraEng" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="contact-option contact-option--vk" href="https://vk.ru/dinaraeng" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </div>
 
-        <h3>Мои ресурсы</h3>
-        <p>Telegram‑канал: <a href="https://t.me/master_english_dinara" target="_blank">t.me/master_english_dinara</a></p>
-        <p>Группа ВКонтакте: <a href="https://vk.com/dinaraenglish" target="_blank">vk.com/dinaraenglish</a></p>
+        <div class="contact-resources">
+          <h3>Больше обо мне и занятиях</h3>
+          <p class="contact-resources-intro">В сообществах я публикую фрагменты уроков, задания, советы и идеи для практики английского.</p>
+          <p>Группа в MAX: <a href="https://max.ru/join/amdYRr2AkgdCYv_DiAkOsykqPY47a3EjAW4GFPcwtxE" target="_blank" rel="noopener noreferrer">перейти в группу</a></p>
+          <p>Telegram‑канал: <a href="https://t.me/master_english_dinara" target="_blank" rel="noopener noreferrer">t.me/master_english_dinara</a></p>
+          <p>Сообщество ВКонтакте: <a href="https://vk.ru/dinaraenglish" target="_blank" rel="noopener noreferrer">vk.ru/dinaraenglish</a></p>
+        </div>
       </div>
     </section>
+
+    <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+      <div class="contact-dialog-inner">
+        <button class="contact-dialog-close" type="button" aria-label="Закрыть">×</button>
+        <h2 id="contact-dialog-title">Записаться на бесплатную диагностику</h2>
+        <p>Выберите удобный способ связи. Я отвечу на вопросы и договорюсь с вами о времени.</p>
+        <div class="contact-options">
+          <a class="contact-option contact-option--max" href="https://max.ru/u/f9LHodD0cOJBxAYv1kH4C_VktHo_U9FZgNO-Ip1Wbeiz_L7MdDSBsA9UL8k" target="_blank" rel="noopener noreferrer">MAX</a>
+          <a class="contact-option contact-option--telegram" href="https://t.me/DinaraEng" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a class="contact-option contact-option--vk" href="https://vk.ru/dinaraeng" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </div>
+      </div>
+    </dialog>
 
     <footer>
       <span>© 2025 Динара | Dinara English</span>
@@ -907,11 +1688,93 @@
   </div>
 
   <script>
+    function slideVideos(direction) {
+      const track = document.querySelector(".video-grid");
+      if (!track) return;
+      track.scrollBy({ left: track.clientWidth * direction, behavior: "smooth" });
+    }
+
+    const videoTrack = document.querySelector(".video-grid");
+
+    if (videoTrack) {
+      let isDraggingVideos = false;
+      let videoDragStartX = 0;
+      let videoDragStartScroll = 0;
+
+      videoTrack.addEventListener("pointerdown", (event) => {
+        if (event.pointerType !== "mouse" || event.target.closest("iframe, button, a")) return;
+        isDraggingVideos = true;
+        videoDragStartX = event.clientX;
+        videoDragStartScroll = videoTrack.scrollLeft;
+        videoTrack.classList.add("is-dragging");
+        videoTrack.setPointerCapture(event.pointerId);
+      });
+
+      videoTrack.addEventListener("pointermove", (event) => {
+        if (!isDraggingVideos) return;
+        videoTrack.scrollLeft = videoDragStartScroll - (event.clientX - videoDragStartX);
+      });
+
+      const stopVideoDrag = (event) => {
+        if (!isDraggingVideos) return;
+        isDraggingVideos = false;
+        videoTrack.classList.remove("is-dragging");
+        if (videoTrack.hasPointerCapture(event.pointerId)) {
+          videoTrack.releasePointerCapture(event.pointerId);
+        }
+      };
+
+      videoTrack.addEventListener("pointerup", stopVideoDrag);
+      videoTrack.addEventListener("pointercancel", stopVideoDrag);
+    }
+
     function slideTestimonials(direction) {
       const track = document.querySelector(".testimonial-track");
       if (!track) return;
       const scrollAmount = 360 * direction;
       track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+
+    const testimonialTrack = document.querySelector(".testimonial-track");
+
+    if (testimonialTrack) {
+      let isDraggingTestimonials = false;
+      let testimonialDragStartX = 0;
+      let testimonialDragStartScroll = 0;
+      let testimonialWasDragged = false;
+
+      testimonialTrack.addEventListener("dragstart", (event) => event.preventDefault());
+
+      testimonialTrack.addEventListener("pointerdown", (event) => {
+        if (event.pointerType !== "mouse" || event.button !== 0) return;
+        isDraggingTestimonials = true;
+        testimonialWasDragged = false;
+        testimonialDragStartX = event.clientX;
+        testimonialDragStartScroll = testimonialTrack.scrollLeft;
+        testimonialTrack.classList.add("is-dragging");
+      });
+
+      document.addEventListener("pointermove", (event) => {
+        if (!isDraggingTestimonials) return;
+        const distance = event.clientX - testimonialDragStartX;
+        if (Math.abs(distance) > 5) testimonialWasDragged = true;
+        testimonialTrack.scrollLeft = testimonialDragStartScroll - distance;
+      });
+
+      const stopTestimonialDrag = () => {
+        if (!isDraggingTestimonials) return;
+        isDraggingTestimonials = false;
+        testimonialTrack.classList.remove("is-dragging");
+      };
+
+      document.addEventListener("pointerup", stopTestimonialDrag);
+      document.addEventListener("pointercancel", stopTestimonialDrag);
+      testimonialTrack.addEventListener("click", (event) => {
+        if (!testimonialWasDragged) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        testimonialWasDragged = false;
+      }, true);
     }
 
     function toggleFAQ(item) {
@@ -921,6 +1784,45 @@
         item.classList.add("open");
       }
     }
+
+    const contactDialog = document.getElementById("contact-dialog");
+
+    function openContactDialog() {
+      if (!contactDialog.open) contactDialog.showModal();
+    }
+
+    contactDialog.querySelector(".contact-dialog-close").addEventListener("click", () => contactDialog.close());
+    contactDialog.querySelectorAll(".contact-option").forEach((link) => {
+      link.addEventListener("click", () => contactDialog.close());
+    });
+    contactDialog.addEventListener("click", (event) => {
+      if (event.target === contactDialog) contactDialog.close();
+    });
+
+    const lessonTabs = document.querySelectorAll(".lesson-tab");
+    lessonTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        lessonTabs.forEach((item) => item.setAttribute("aria-selected", "false"));
+        document.querySelectorAll(".lesson-panel").forEach((panel) => panel.hidden = true);
+        tab.setAttribute("aria-selected", "true");
+        document.getElementById(tab.getAttribute("aria-controls")).hidden = false;
+      });
+    });
+
+    const lessonDialog = document.getElementById("lesson-dialog");
+    const lessonDialogImage = lessonDialog.querySelector("img");
+    document.querySelectorAll(".lesson-image-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const preview = button.querySelector("img");
+        lessonDialogImage.src = preview.src;
+        lessonDialogImage.alt = preview.alt;
+        lessonDialog.showModal();
+      });
+    });
+    lessonDialog.querySelector(".lesson-dialog-close").addEventListener("click", () => lessonDialog.close());
+    lessonDialog.addEventListener("click", (event) => {
+      if (event.target === lessonDialog) lessonDialog.close();
+    });
   </script>
 </body>
 </html>
