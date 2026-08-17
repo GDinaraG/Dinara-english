@@ -869,8 +869,19 @@
       }
     }
 
+    #videos {
+      padding-top: 3.5rem;
+    }
+
     .video-carousel {
       position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .video-section-hint {
+      margin: -0.55rem 0 1.15rem;
+      color: #6b7280;
+      font-size: 0.95rem;
     }
 
     .video-grid {
@@ -888,6 +899,11 @@
 
     .video-grid.is-dragging {
       cursor: grabbing;
+      scroll-behavior: auto;
+      scroll-snap-type: none;
+    }
+
+    .video-grid.is-auto-scrolling {
       scroll-behavior: auto;
       scroll-snap-type: none;
     }
@@ -1393,15 +1409,102 @@
       }
     }
 
-    footer {
-      text-align: center;
-      padding: 1.8rem 1rem 2rem;
-      color: #6b7280;
-      font-size: 0.85rem;
+    .site-footer {
+      width: 100%;
+      margin: 1.25rem 0 0;
+      padding: 1rem clamp(1rem, 5vw, 4rem);
+      border-top: 1px solid rgba(109, 74, 255, 0.12);
+      background: linear-gradient(90deg, rgba(241, 245, 255, 0.78), rgba(232, 248, 255, 0.82));
+      color: #4b5563;
     }
 
-    footer span {
-      opacity: 0.85;
+    .site-footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      width: min(100%, 1250px);
+      margin: 0 auto;
+    }
+
+    .site-footer-top {
+      color: #4b5563;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .site-footer-top:hover,
+    .site-footer-top:focus-visible {
+      color: #5b3df5;
+    }
+
+    .site-footer-copy {
+      margin: 0;
+      color: #6b7280;
+      font-size: 0.82rem;
+    }
+
+    .site-footer-socials {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.45rem;
+      margin-left: auto;
+    }
+
+    .site-footer-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.15rem;
+      height: 2.15rem;
+      width: 2.15rem;
+      padding: 0;
+      border: 1px solid rgba(109, 74, 255, 0.14);
+      border-radius: 10px;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 5px 13px rgba(71, 85, 105, 0.12);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .site-footer-social:hover,
+    .site-footer-social:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 16px rgba(71, 85, 105, 0.18);
+    }
+
+    .site-footer-social--vk { background: #2787f5; }
+    .site-footer-social--telegram { background: #2aabee; }
+    .site-footer-social--max { background: linear-gradient(135deg, #7761ff, #a64cf4); }
+
+    .site-footer-social img {
+      display: block;
+      width: 1.3rem;
+      height: 1.3rem;
+      object-fit: contain;
+    }
+
+    .site-footer-social--max img {
+      width: 1.45rem;
+      height: 1.45rem;
+    }
+
+    @media (max-width: 520px) {
+      .site-footer {
+        padding: 0.9rem 1rem;
+      }
+
+      .site-footer-main {
+        flex-wrap: wrap;
+      }
+
+      .site-footer-copy {
+        font-size: 0.78rem;
+      }
+
+      .site-footer-top { order: 3; width: 100%; text-align: center; }
     }
   </style>
 </head>
@@ -1610,6 +1713,7 @@
 
     <section class="section" id="videos">
       <h2><span class="section-icon" aria-hidden="true"><img src="assets/icons/video.svg" alt=""></span> Видео с уроков</h2>
+      <p class="video-section-hint">Нажмите на видео, чтобы посмотреть, как проходят занятия.</p>
       <div class="card video-carousel">
         <div class="video-grid">
           <div class="video-card">
@@ -1802,7 +1906,7 @@
     <section class="section" id="contacts">
       <h2><span class="section-icon" aria-hidden="true"><img src="assets/icons/send.svg" alt=""></span> Контакты</h2>
       <div class="contacts-card">
-        <p class="contacts-lead">Напишите мне удобным способом - отвечу на вопросы и договоримся о бесплатной диагностике.</p>
+        <p class="contacts-lead">Напишите мне, и я свяжусь с вами для бесплатной первой встречи: разберём все вопросы и подберём формат под ваши цели.</p>
 
         <h3>Выберите удобный способ связи</h3>
         <div class="contact-options">
@@ -1834,8 +1938,16 @@
       </div>
     </dialog>
 
-    <footer>
-      <span>© 2025 Динара | Dinara English</span>
+    <footer class="site-footer">
+      <div class="site-footer-main">
+        <p class="site-footer-copy">© 2025 Динара | Dinara English</p>
+        <div class="site-footer-socials" aria-label="Личные контакты">
+          <a class="site-footer-social site-footer-social--vk" href="https://vk.ru/dinaraeng" target="_blank" rel="noopener noreferrer" aria-label="Написать ВКонтакте"><img src="assets/icons/vk-white.svg" alt=""></a>
+          <a class="site-footer-social site-footer-social--telegram" href="https://t.me/DinaraEng" target="_blank" rel="noopener noreferrer" aria-label="Написать в Telegram"><img src="assets/icons/telegram-white.svg" alt=""></a>
+          <a class="site-footer-social site-footer-social--max" href="https://max.ru/u/f9LHodD0cOJBxAYv1kH4C_VktHo_U9FZgNO-Ip1Wbeiz_L7MdDSBsA9UL8k" target="_blank" rel="noopener noreferrer" aria-label="Написать в MAX"><img src="assets/icons/max-white.png" alt=""></a>
+        </div>
+        <a class="site-footer-top" href="#top">Наверх ↑</a>
+      </div>
     </footer>
   </div>
 
@@ -1867,9 +1979,12 @@
       if (event.key === "Escape") setSiteNavOpen(false);
     });
 
+    let stopVideoAutoScroll = () => {};
+
     function slideVideos(direction) {
       const track = document.querySelector(".video-grid");
       if (!track) return;
+      stopVideoAutoScroll();
       track.scrollBy({ left: track.clientWidth * direction, behavior: "smooth" });
     }
 
@@ -1879,8 +1994,62 @@
       let isDraggingVideos = false;
       let videoDragStartX = 0;
       let videoDragStartScroll = 0;
+      let videoAutoScrollStopped = false;
+      let videoHoverPaused = false;
+      let previousVideoFrameTime = 0;
+      const reduceVideoMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!reduceVideoMotion) {
+        videoTrack.classList.add("is-auto-scrolling");
+      }
+
+      stopVideoAutoScroll = () => {
+        videoAutoScrollStopped = true;
+        videoTrack.classList.remove("is-auto-scrolling");
+      };
+
+      const animateVideoTrack = (time) => {
+        if (!previousVideoFrameTime) previousVideoFrameTime = time;
+        const elapsedSeconds = Math.min((time - previousVideoFrameTime) / 1000, 0.05);
+        previousVideoFrameTime = time;
+
+        const videoTrackHasFocus = document.activeElement && videoTrack.contains(document.activeElement);
+
+        if (!reduceVideoMotion && !videoAutoScrollStopped && !videoHoverPaused && !videoTrackHasFocus && !document.hidden) {
+          const firstVideoCard = videoTrack.firstElementChild;
+
+          if (firstVideoCard && videoTrack.scrollWidth > videoTrack.clientWidth) {
+            videoTrack.scrollLeft += 28 * elapsedSeconds;
+
+            const trackStyles = window.getComputedStyle(videoTrack);
+            const trackGap = parseFloat(trackStyles.columnGap || trackStyles.gap || "0") || 0;
+            const firstCardWidth = firstVideoCard.getBoundingClientRect().width + trackGap;
+
+            if (videoTrack.scrollLeft >= firstCardWidth) {
+              videoTrack.appendChild(firstVideoCard);
+              videoTrack.scrollLeft -= firstCardWidth;
+            }
+          }
+        }
+
+        window.requestAnimationFrame(animateVideoTrack);
+      };
+
+      window.requestAnimationFrame(animateVideoTrack);
+
+      videoTrack.addEventListener("pointerleave", () => {
+        videoHoverPaused = false;
+      });
+
+      window.addEventListener("resize", () => {
+        videoHoverPaused = false;
+        previousVideoFrameTime = performance.now();
+      });
+
+      videoTrack.addEventListener("touchstart", stopVideoAutoScroll, { passive: true });
 
       videoTrack.addEventListener("pointerdown", (event) => {
+        stopVideoAutoScroll();
         if (event.pointerType !== "mouse" || event.target.closest("iframe, button, a")) return;
         isDraggingVideos = true;
         videoDragStartX = event.clientX;
@@ -1890,6 +2059,7 @@
       });
 
       videoTrack.addEventListener("pointermove", (event) => {
+        if (event.pointerType === "mouse") videoHoverPaused = true;
         if (!isDraggingVideos) return;
         videoTrack.scrollLeft = videoDragStartScroll - (event.clientX - videoDragStartX);
       });
@@ -1905,6 +2075,12 @@
 
       videoTrack.addEventListener("pointerup", stopVideoDrag);
       videoTrack.addEventListener("pointercancel", stopVideoDrag);
+
+      window.addEventListener("blur", () => {
+        if (document.activeElement && videoTrack.contains(document.activeElement)) {
+          stopVideoAutoScroll();
+        }
+      });
     }
 
     function slideTestimonials(direction) {
