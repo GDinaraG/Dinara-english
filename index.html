@@ -1518,6 +1518,769 @@
 
       .site-footer-top { order: 3; width: 100%; text-align: center; }
     }
+
+    .gift-fab {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 90;
+      display: block;
+      width: 202px;
+      height: 70px;
+      padding: 1.95rem 0.78rem 0.5rem;
+      border: 1.5px solid #651524;
+      border-radius: 13px 28px 9px 9px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.18) 0 3px, transparent 3px 100%),
+        linear-gradient(145deg, #d04452 0%, #ad293d 54%, #801b2c 100%);
+      color: #fffaf0;
+      font: inherit;
+      font-weight: 700;
+      box-shadow:
+        inset 0 -3px 0 rgba(82, 14, 28, 0.28),
+        0 15px 30px rgba(91, 20, 36, 0.3);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateX(calc(100% + 2.5rem));
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.72s cubic-bezier(0.22, 0.76, 0.24, 1), box-shadow 0.2s ease;
+      overflow: visible;
+    }
+
+    .gift-fab::before {
+      content: "";
+      position: absolute;
+      top: 0.45rem;
+      left: 0.7rem;
+      width: 143px;
+      height: 17px;
+      border: 1px solid rgba(242, 210, 143, 0.85);
+      border-radius: 4px 10px 4px 4px;
+      background:
+        repeating-linear-gradient(90deg, transparent 0 20px, #812033 20px 24px),
+        linear-gradient(155deg, #f8efe0 0%, #dce9ea 48%, #bcd1d8 54%, #f5e5c8 100%);
+      box-shadow:
+        inset 0 -3px 0 rgba(91, 20, 36, 0.15),
+        0 3px 0 rgba(229, 185, 95, 0.82);
+    }
+
+    .gift-fab::after {
+      content: "";
+      position: absolute;
+      left: 1.7rem;
+      bottom: -0.5rem;
+      width: 14px;
+      height: 14px;
+      border: 2.5px solid #f4dfb4;
+      border-radius: 50%;
+      background: #263047;
+      box-shadow: 122px 0 0 -2.5px #263047, 122px 0 0 0 #f4dfb4;
+    }
+
+    .gift-fab.visible {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    .gift-fab:hover {
+      transform: translateX(-4px);
+      box-shadow: 0 21px 42px rgba(91, 20, 36, 0.38);
+    }
+
+    .gift-fab-copy {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 148px;
+      margin: 0 auto;
+      padding: 0.25rem 0.45rem;
+      border: 1px solid rgba(244, 211, 143, 0.9);
+      border-radius: 6px;
+      background: linear-gradient(180deg, #fffaf0, #f1d9aa);
+      color: #7c1c2e;
+      font-size: 0.78rem;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+      text-align: center;
+      text-shadow: none;
+      box-shadow:
+        inset 0 0 0 1px rgba(126, 70, 34, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.55);
+    }
+
+    .gift-fab-copy::before {
+      content: none;
+    }
+
+    .gift-fab small {
+      display: block;
+      color: #6b7280;
+      font-size: 0.72rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .gift-dialog {
+      width: min(1240px, calc(100% - 1.5rem));
+      min-width: 0;
+      max-height: calc(100vh - 2rem);
+      padding: 0;
+      border: 0;
+      border-radius: 26px;
+      background: transparent;
+      color: #1f2937;
+      overflow: visible;
+      box-sizing: border-box;
+    }
+
+    .gift-dialog::backdrop {
+      background: rgba(30, 20, 55, 0.58);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+    }
+
+    .gift-dialog-card {
+      position: relative;
+      width: 100%;
+      min-width: 0;
+      max-height: calc(100vh - 2rem);
+      padding: 1.05rem 1.25rem 0.85rem;
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(196, 181, 253, 0.42), transparent 30%),
+        radial-gradient(circle at 96% 14%, rgba(186, 230, 253, 0.45), transparent 28%),
+        radial-gradient(circle at 80% 100%, rgba(251, 207, 232, 0.38), transparent 32%),
+        linear-gradient(145deg, #fffefd, #f7f5ff 58%, #f3f9ff);
+      box-shadow: 0 28px 75px rgba(30, 20, 55, 0.32);
+      overflow-y: auto;
+      overflow-x: hidden;
+      box-sizing: border-box;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .gift-dialog-card::-webkit-scrollbar,
+    .gift-envelopes::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    .gift-dialog-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: var(--gift-pattern, none);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .gift-dialog-card::after {
+      content: "";
+      position: absolute;
+      right: -2.8rem;
+      bottom: -4.5rem;
+      z-index: 0;
+      width: 360px;
+      height: 260px;
+      background: var(--gift-art, none) center / contain no-repeat;
+      opacity: 0;
+      transform: rotate(-5deg) scale(0.94);
+      filter: saturate(0.92) contrast(0.98);
+      -webkit-mask-image: linear-gradient(105deg, transparent 2%, #000 42%, #000 100%);
+      mask-image: linear-gradient(105deg, transparent 2%, #000 42%, #000 100%);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+
+    .gift-dialog-card.result-active {
+      --gift-accent: #7c3aed;
+      --gift-soft: rgba(237, 233, 254, 0.9);
+      background: var(--gift-surface, linear-gradient(135deg, #ffffff, var(--gift-soft)));
+      border-color: color-mix(in srgb, var(--gift-accent) 30%, white);
+      box-shadow:
+        inset 0 0 0 3px color-mix(in srgb, var(--gift-accent) 12%, transparent),
+        0 28px 75px rgba(30, 20, 55, 0.32);
+    }
+
+    .gift-dialog-card.result-active::before {
+      opacity: 0.62;
+    }
+
+    .gift-dialog-card.result-active::after {
+      opacity: 0.18;
+      transform: rotate(-5deg) scale(1);
+    }
+
+    .gift-dialog-card[data-gift-theme="airmail"] {
+      --gift-accent: #b84d3c;
+      --gift-soft: #f8eddf;
+      --gift-surface:
+        linear-gradient(135deg, rgba(255, 253, 248, 0.2), rgba(255, 250, 242, 0.42)),
+        url("assets/gift-result-airmail-bg.webp") center / cover no-repeat;
+      --gift-pattern: none;
+      --gift-art: url("assets/gift-envelope-airmail.png");
+    }
+
+    .gift-dialog-card[data-gift-theme="pink"] {
+      --gift-accent: #d66f98;
+      --gift-soft: #fbe5ee;
+      --gift-surface: linear-gradient(145deg, #fffafb 0%, #fce6ee 72%, #efb8cc 100%);
+      --gift-pattern: radial-gradient(circle at 12% 18%, rgba(181, 132, 35, 0.32) 0 3px, transparent 4px), radial-gradient(circle at 84% 24%, rgba(181, 132, 35, 0.28) 0 2px, transparent 3px), radial-gradient(circle at 73% 82%, rgba(214, 111, 152, 0.25) 0 8px, transparent 9px), radial-gradient(circle at 92% 68%, rgba(181, 132, 35, 0.22) 0 4px, transparent 5px);
+      --gift-art: url("assets/gift-envelope-pink.png");
+    }
+
+    .gift-dialog-card[data-gift-theme="night"] {
+      --gift-accent: #b28a3c;
+      --gift-soft: #e8edf8;
+      --gift-surface: linear-gradient(120deg, #fffdf8 0%, #f8f6ef 62%, #dce4f2 78%, #193552 100%);
+      --gift-pattern: none;
+      --gift-art: url("assets/gift-envelope-night.png");
+    }
+
+    .gift-dialog-card[data-gift-theme="travel"] {
+      --gift-accent: #5f7d62;
+      --gift-soft: #e6efe4;
+      --gift-surface: linear-gradient(145deg, #fffdf8 0%, #f3f5ed 66%, #dce8d8 100%);
+      --gift-pattern: none;
+      --gift-art: url("assets/gift-envelope-travel.png");
+    }
+
+    .gift-dialog-card[data-gift-theme="movie"] {
+      --gift-accent: #b37642;
+      --gift-soft: #f8ead8;
+      --gift-surface:
+        linear-gradient(135deg, rgba(255, 253, 247, 0.16), rgba(255, 248, 236, 0.36)),
+        url("assets/gift-result-movie-bg.webp") center / cover no-repeat;
+      --gift-pattern: none;
+      --gift-art: url("assets/gift-envelope-movie.png");
+    }
+
+    .gift-dialog-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .gift-dialog-close {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 0;
+      border-radius: 50%;
+      background: #ede9fe;
+      color: #5b21b6;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .gift-dialog-header {
+      max-width: 650px;
+      margin: 0 auto 0.15rem;
+      text-align: center;
+    }
+
+    .gift-picker {
+      min-width: 0;
+    }
+
+    .gift-dialog-header h2 {
+      margin: 0 0 0.2rem;
+      color: #312e81;
+      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      line-height: 1.2;
+    }
+
+    .gift-dialog-header p {
+      margin: 0;
+      color: #5f6472;
+    }
+
+    .gift-envelopes {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(185px, 1fr));
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .gift-envelope {
+      --envelope: #b9a8ff;
+      --envelope-dark: #8b73e8;
+      position: relative;
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      perspective: 700px;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .gift-envelopes:has(.gift-envelope.opening) .gift-envelope:not(.opening) {
+      opacity: 0.3;
+      transform: scale(0.94);
+    }
+
+    .gift-envelope-visual {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      transform-style: preserve-3d;
+    }
+
+    .gift-envelope-open-state {
+      position: absolute;
+      inset: 0;
+      display: block;
+      opacity: 0;
+      transform: rotateY(-90deg) scale(0.92);
+      transform-origin: center;
+      pointer-events: none;
+    }
+
+    .gift-envelope-note {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      top: 44%;
+      width: 52%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.05rem;
+      color: #4e4035;
+      text-align: center;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.92);
+      pointer-events: none;
+    }
+
+    .gift-envelope-note small {
+      color: #7a6f65;
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .gift-envelope-note strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(0.62rem, 0.88vw, 0.8rem);
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    .gift-envelope[data-theme="movie"] .gift-envelope-note strong {
+      font-size: clamp(0.53rem, 0.73vw, 0.67rem);
+    }
+
+    .gift-envelope:nth-child(2) { --envelope: #9eddf5; --envelope-dark: #63b9dc; }
+    .gift-envelope:nth-child(3) { --envelope: #fac7d9; --envelope-dark: #ee8eb1; }
+    .gift-envelope:nth-child(4) { --envelope: #bce7d2; --envelope-dark: #78c7a2; }
+    .gift-envelope:nth-child(5) { --envelope: #f6d8a8; --envelope-dark: #e4ad59; }
+
+    .gift-envelope-body {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 112px;
+      border: 1px solid rgba(49, 46, 129, 0.12);
+      border-radius: 8px 8px 15px 15px;
+      background: var(--envelope);
+      box-shadow: 0 13px 24px rgba(49, 46, 129, 0.17);
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .gift-envelope-body::before,
+    .gift-envelope-body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .gift-envelope-body::before {
+      background: linear-gradient(35deg, var(--envelope-dark) 49.5%, transparent 50%) left bottom / 51% 100% no-repeat,
+                  linear-gradient(-35deg, var(--envelope-dark) 49.5%, transparent 50%) right bottom / 51% 100% no-repeat;
+      opacity: 0.55;
+    }
+
+    .gift-envelope-body::after {
+      background: linear-gradient(145deg, transparent 49.5%, rgba(255,255,255,0.33) 50%) left top / 51% 100% no-repeat,
+                  linear-gradient(-145deg, transparent 49.5%, rgba(255,255,255,0.2) 50%) right top / 51% 100% no-repeat;
+    }
+
+    .gift-envelope-flap {
+      position: absolute;
+      z-index: 3;
+      left: 1px;
+      right: 1px;
+      bottom: 53px;
+      height: 72px;
+      border-radius: 8px 8px 0 0;
+      background: var(--envelope-dark);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top;
+      transition: transform 0.48s ease;
+    }
+
+    .gift-envelope-letter {
+      position: absolute;
+      z-index: 2;
+      left: 12%;
+      right: 12%;
+      bottom: 18px;
+      height: 86px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.75rem;
+      border-radius: 8px;
+      background: #fffdf8;
+      color: #5b21b6;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 5px 14px rgba(49, 46, 129, 0.13);
+      transition: transform 0.48s ease;
+    }
+
+    .gift-envelope-label {
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      bottom: 27px;
+      transform: translateX(-50%);
+      padding: 0.28rem 0.62rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      color: #4338ca;
+      font-size: 0.73rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .gift-envelope:hover .gift-envelope-body,
+    .gift-envelope:focus-visible .gift-envelope-body {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 30px rgba(49, 46, 129, 0.24);
+    }
+
+    .gift-envelope.opening .gift-envelope-flap {
+      transform: rotateX(175deg);
+    }
+
+    .gift-envelope.opening .gift-envelope-letter {
+      transform: translateY(-52px);
+    }
+
+    .gift-envelope-image {
+      position: relative;
+      z-index: 2;
+      display: block;
+      top: -5%;
+      width: 110%;
+      height: 110%;
+      margin-left: -5%;
+      object-fit: contain;
+      filter: drop-shadow(0 14px 12px rgba(49, 46, 129, 0.2));
+      transition: transform 0.35s ease, filter 0.25s ease;
+    }
+
+    .gift-envelope:not(.opening):hover .gift-envelope-closed,
+    .gift-envelope:not(.opening):focus-visible .gift-envelope-closed {
+      transform: translateY(-7px) scale(1.04) rotate(-1deg);
+    }
+
+    .gift-envelope.opening .gift-envelope-closed {
+      animation: giftClosedFlip 0.42s ease-in forwards;
+    }
+
+    .gift-envelope.opening .gift-envelope-open-state {
+      animation: giftOpenFlip 0.58s 0.34s cubic-bezier(0.2, 0.78, 0.22, 1) forwards;
+    }
+
+    .gift-envelope.opening .gift-envelope-note {
+      animation: giftNoteReveal 0.34s 0.72s ease-out forwards;
+    }
+
+    @keyframes giftClosedFlip {
+      0% { opacity: 1; transform: rotateY(0) scale(1); }
+      100% { opacity: 0; transform: rotateY(90deg) scale(0.92); }
+    }
+
+    @keyframes giftOpenFlip {
+      0% { opacity: 0; transform: rotateY(-90deg) scale(0.92); }
+      70% { opacity: 1; transform: rotateY(8deg) scale(1.2); }
+      100% { opacity: 1; transform: rotateY(0) scale(1.14); }
+    }
+
+    @keyframes giftNoteReveal {
+      0% { opacity: 0; transform: translate(-50%, -44%) scale(0.92); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    .gift-result {
+      display: none;
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .gift-result.visible { display: block; }
+    .gift-picker.hidden { display: none; }
+
+    .gift-dialog-card:has(.gift-result.visible) {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.15rem 1.45rem 1.25rem;
+    }
+
+    .gift-result-mark {
+      display: grid;
+      place-items: center;
+      width: 3.6rem;
+      height: 2.9rem;
+      margin: 0 auto 0.35rem;
+      color: var(--gift-accent, #7c3aed);
+      filter: drop-shadow(0 5px 8px color-mix(in srgb, var(--gift-accent, #7c3aed) 20%, transparent));
+    }
+
+    .gift-result-mark svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.45;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .gift-result h2 {
+      margin: 0 0 0.25rem;
+      color: color-mix(in srgb, var(--gift-accent, #312e81) 62%, #24164d);
+      font-size: clamp(1.55rem, 3vw, 2rem);
+      line-height: 1.22;
+    }
+
+    .gift-result h2::after {
+      content: "";
+      display: block;
+      width: 3rem;
+      height: 3px;
+      margin: 0.42rem auto 0;
+      border-radius: 999px;
+      background: var(--gift-accent, #7c3aed);
+      box-shadow: 0 4px 12px color-mix(in srgb, var(--gift-accent, #7c3aed) 35%, transparent);
+    }
+
+    .gift-result-description {
+      max-width: 580px;
+      margin: 0 auto 0.65rem;
+      color: #4b5563;
+    }
+
+    .gift-code {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      max-width: 520px;
+      margin: 0.7rem auto;
+      padding: 0.72rem 0.9rem;
+      border: 1px dashed color-mix(in srgb, var(--gift-accent, #7c3aed) 55%, transparent);
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--gift-soft, #f5f3ff) 76%, white);
+      text-align: left;
+    }
+
+    .gift-code small {
+      display: block;
+      color: #6b7280;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .gift-code strong {
+      color: color-mix(in srgb, var(--gift-accent, #4c1d95) 72%, #24164d);
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+    }
+
+    .gift-copy,
+    .gift-back {
+      border: 0;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .gift-copy {
+      padding: 0.58rem 0.85rem;
+      background: color-mix(in srgb, var(--gift-accent, #7c3aed) 18%, white);
+      color: color-mix(in srgb, var(--gift-accent, #5b21b6) 76%, #24164d);
+    }
+
+    .gift-result .contact-options {
+      max-width: 560px;
+      margin: 0.7rem auto 0;
+    }
+
+    .gift-result-contacts > p {
+      max-width: 560px;
+      margin: 0.9rem auto 0;
+      color: #374151;
+      font-size: 1rem;
+      line-height: 1.48;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .gift-back {
+      margin-top: 0.65rem;
+      padding: 0.45rem 0.9rem;
+      background: transparent;
+      color: #6d28d9;
+    }
+
+    .gift-back[hidden] {
+      display: none;
+    }
+
+    .gift-placeholder .gift-code,
+    .gift-placeholder .gift-result-contacts {
+      display: none;
+    }
+
+    @media (max-width: 760px) {
+      .gift-dialog {
+        position: fixed;
+        inset: 50% auto auto 50%;
+        width: calc(100% - 1rem);
+        max-width: calc(100% - 1rem);
+        margin: 0;
+        transform: translate(-50%, -50%);
+      }
+
+      .gift-fab {
+        right: 0.75rem;
+        bottom: 0.75rem;
+        width: 184px;
+        height: 64px;
+        padding: 1.75rem 0.65rem 0.42rem;
+      }
+
+      .gift-fab::before {
+        top: 0.38rem;
+        left: 0.62rem;
+        width: 128px;
+        height: 15px;
+        background:
+          repeating-linear-gradient(90deg, transparent 0 18px, #812033 18px 22px),
+          linear-gradient(155deg, #f8efe0 0%, #dce9ea 48%, #bcd1d8 54%, #f5e5c8 100%);
+      }
+
+      .gift-fab::after {
+        left: 1.5rem;
+        width: 13px;
+        height: 13px;
+        box-shadow: 110px 0 0 -2.5px #263047, 110px 0 0 0 #f4dfb4;
+      }
+
+      .gift-fab-copy {
+        font-size: 0.76rem;
+      }
+
+      .gift-dialog-card {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 1.35rem 0.8rem 1rem;
+      }
+
+      .gift-dialog-header {
+        padding-inline: 2.25rem;
+      }
+
+      .gift-dialog-card:has(.gift-result.visible) {
+        padding: 1.25rem 0.9rem 1rem;
+      }
+
+      .gift-envelopes {
+        display: flex;
+        overflow-x: auto;
+        gap: 0.75rem;
+        padding: 0.25rem 0.1rem 0.55rem;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 0.15rem;
+        overscroll-behavior-inline: contain;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .gift-envelope {
+        flex: 0 0 74%;
+        min-width: 220px;
+        max-width: 280px;
+        scroll-snap-align: center;
+      }
+
+      .gift-envelope-image {
+        top: -2%;
+        width: 104%;
+        height: 104%;
+        margin-left: -2%;
+      }
+
+      .gift-envelope-visual {
+        height: auto;
+        aspect-ratio: 3 / 2;
+      }
+
+      .gift-dialog-card.result-active::before {
+        opacity: 0.5;
+      }
+
+      .gift-dialog-card.result-active::after {
+        right: -5rem;
+        bottom: -3.8rem;
+        width: 290px;
+        height: 220px;
+        opacity: 0.12;
+      }
+
+      .gift-code {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .gift-result .contact-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .gift-envelope { flex-basis: 78%; }
+    }
   </style>
 </head>
 <body>
@@ -1729,28 +2492,64 @@
       <div class="card video-carousel">
         <div class="video-grid">
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239076&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
-            <p><strong>Что делал вчера? Учим Past Simple в диалоге</strong></p>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239077&autoplay=0&loop=1" title="Past Simple в игре - английский на уроке" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Past Simple в игре | Английский на уроке</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239074&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
-            <p><strong>Квест - КОТОстрофа: кто виноват?</strong></p>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239074&autoplay=0&loop=1" title="КОТОстрофа - квест на английском" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>КОТОстрофа! Расследуем пропажу | Квест на английском</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239063&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
-            <p><strong>Приключение на поезде на английском</strong></p>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239063&autoplay=0&loop=1" title="Новогоднее приключение на английском по The Polar Express" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Новогоднее приключение на английском | The Polar Express</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239040&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
-            <p><strong>Present Simple в реальных примерах | Мини-урок</strong></p>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239038&autoplay=0&loop=1" title="Скороговорка на английском" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Сможете сказать без запинки? | Скороговорка на английском</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239024&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
-            <p><strong>Профессии, которые вдохновляют</strong></p>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239024&autoplay=0&loop=1" title="Открыл природу миллионам - английский на уроке" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Открыл природу миллионам | Английский на уроке</strong></p>
           </div>
           <div class="video-card">
-            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239022&autoplay=0&loop=1" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
-            <p><strong>Английский через сериал Silverpoint</strong></p>
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239163&autoplay=0&loop=1" title="Разбираемся со stative verbs" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Почему нельзя I’m knowing, но можно I’m lovin’ it? | Разбираемся со stative verbs</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239158&autoplay=0&loop=1" title="Как выучить Present Continuous" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Как за ДВЕ минуты выучить Present Continuous | Ловкость рук и немного грамматики</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239152&autoplay=0&loop=1" title="Разминка на английском со спрятанными словами" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Найдите 6 спрятанных слов | Разминка на английском</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239040&autoplay=0&loop=1" title="Английский по Astro Kid" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Как живется одному в космосе? | Английский по Astro Kid</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239045&autoplay=0&loop=1" title="Английский по Goosebumps" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Мурашки по коже 🎃 | Английский по Goosebumps</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239098&autoplay=0&loop=1" title="Английский по Сильверпойнт" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Проверьте свой английский на слух | Английский по Сильверпойнт</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239125&autoplay=0&loop=1" title="Английский по The Hollow" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Мультсериал вместо учебника | Английский по The Hollow</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239133&autoplay=0&loop=1" title="Детективное расследование по Гравити Фолз" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Детективное расследование на английском | Гравити Фолз</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239159&autoplay=0&loop=1" title="Английский по Проклятию Бридж Холлоу" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Разговорные фразы из кино | Английский по Проклятию Бридж Холлоу</strong></p>
+          </div>
+          <div class="video-card">
+            <iframe src="https://vkvideo.ru/video_ext.php?oid=-226899370&id=456239164&autoplay=0&loop=1" title="Проверка английского на слух по The Hollow" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
+            <p><strong>Сможете услышать 4 слова? Английский по The Hollow</strong></p>
           </div>
         </div>
         <div class="video-nav" aria-label="Навигация по видео">
@@ -1946,6 +2745,97 @@
           <a class="contact-option contact-option--max" href="https://max.ru/u/f9LHodD0cOJBxAYv1kH4C_VktHo_U9FZgNO-Ip1Wbeiz_L7MdDSBsA9UL8k" target="_blank" rel="noopener noreferrer">MAX</a>
           <a class="contact-option contact-option--telegram" href="https://t.me/DinaraEng" target="_blank" rel="noopener noreferrer">Telegram</a>
           <a class="contact-option contact-option--vk" href="https://vk.ru/dinaraeng" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </div>
+      </div>
+    </dialog>
+
+    <button class="gift-fab" id="gift-fab" type="button" aria-label="Открыть подарок">
+      <span class="gift-fab-copy">Дарю подарок!</span>
+    </button>
+
+    <dialog class="gift-dialog" id="gift-dialog" aria-labelledby="gift-dialog-title">
+      <div class="gift-dialog-card">
+        <button class="gift-dialog-close" type="button" aria-label="Закрыть">×</button>
+
+        <div class="gift-picker" id="gift-picker">
+          <div class="gift-dialog-header">
+            <h2 id="gift-dialog-title">Вас ждёт подарок!</h2>
+            <p>Выберите один из пяти конвертов и узнайте, какой бонус вам достался.</p>
+          </div>
+
+          <div class="gift-envelopes" aria-label="Конверты с подарками">
+            <button class="gift-envelope" type="button" aria-label="Открыть первый подарок" data-theme="airmail" data-title="Скидка 10%" data-description="Скидка 10% на первые три индивидуальных занятия или занятия по подготовке к ОГЭ." data-code="СТАРТ10">
+              <span class="gift-envelope-visual">
+                <img class="gift-envelope-image gift-envelope-closed" src="assets/gift-envelope-airmail.png" alt="" draggable="false">
+                <span class="gift-envelope-open-state">
+                  <img class="gift-envelope-image gift-envelope-open" src="assets/gift-envelope-airmail-open.png" alt="" draggable="false">
+                  <span class="gift-envelope-note"><small>Ваш подарок</small><strong>Скидка 10%</strong></span>
+                </span>
+              </span>
+            </button>
+            <button class="gift-envelope" type="button" aria-label="Открыть второй подарок" data-theme="pink" data-title="Английский квест" data-description="Квест-приключение с загадками и заданиями на английском в подарок." data-code="КВЕСТ">
+              <span class="gift-envelope-visual">
+                <img class="gift-envelope-image gift-envelope-closed" src="assets/gift-envelope-pink.png" alt="" draggable="false">
+                <span class="gift-envelope-open-state">
+                  <img class="gift-envelope-image gift-envelope-open" src="assets/gift-envelope-pink-open.png" alt="" draggable="false">
+                  <span class="gift-envelope-note"><small>Ваш подарок</small><strong>Английский квест</strong></span>
+                </span>
+              </span>
+            </button>
+            <button class="gift-envelope" type="button" aria-label="Открыть третий подарок" data-theme="night" data-title="Подарок вам и другу" data-description="Скидка 10% вам и другу на первое занятие. Поделитесь с ним кодовым словом." data-code="ВМЕСТЕ">
+              <span class="gift-envelope-visual">
+                <img class="gift-envelope-image gift-envelope-closed" src="assets/gift-envelope-night.png" alt="" draggable="false">
+                <span class="gift-envelope-open-state">
+                  <img class="gift-envelope-image gift-envelope-open" src="assets/gift-envelope-night-open.png" alt="" draggable="false">
+                  <span class="gift-envelope-note"><small>Ваш подарок</small><strong>Вам и другу</strong></span>
+                </span>
+              </span>
+            </button>
+            <button class="gift-envelope" type="button" aria-label="Открыть четвёртый подарок" data-theme="travel" data-title="Урок по фильму" data-description="Один урок из асинхронного курса по фильму или сериалу в подарок на ваш выбор." data-code="КИНОУРОК">
+              <span class="gift-envelope-visual">
+                <img class="gift-envelope-image gift-envelope-closed" src="assets/gift-envelope-travel.png" alt="" draggable="false">
+                <span class="gift-envelope-open-state">
+                  <img class="gift-envelope-image gift-envelope-open" src="assets/gift-envelope-travel-open.png" alt="" draggable="false">
+                  <span class="gift-envelope-note"><small>Ваш подарок</small><strong>Урок по фильму</strong></span>
+                </span>
+              </span>
+            </button>
+            <button class="gift-envelope" type="button" aria-label="Открыть пятый подарок" data-theme="movie" data-title="Английский без пробелов" data-description="Короткий тест покажет, какие темы уже усвоены, а что стоит повторить. После теста я напишу свои рекомендации." data-code="БЕЗ ПРОБЕЛОВ">
+              <span class="gift-envelope-visual">
+                <img class="gift-envelope-image gift-envelope-closed" src="assets/gift-envelope-movie.png" alt="" draggable="false">
+                <span class="gift-envelope-open-state">
+                  <img class="gift-envelope-image gift-envelope-open" src="assets/gift-envelope-movie-open.png" alt="" draggable="false">
+                  <span class="gift-envelope-note"><small>Ваш подарок</small><strong>Английский без пробелов</strong></span>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="gift-result" id="gift-result" aria-live="polite">
+          <div class="gift-result-mark" aria-hidden="true">
+            <svg viewBox="0 0 56 44" focusable="false">
+              <path d="M7.5 13.5h32a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4h-32a4 4 0 0 1-4-4v-18a4 4 0 0 1 4-4Z" />
+              <path d="m5.5 16 18 13 18-13" />
+              <path d="m5.5 37 12.8-11.7M41.5 37 28.8 25.3" />
+              <path d="M46.5 4v7M43 7.5h7M50.5 11.5v4M48.5 13.5h4" />
+            </svg>
+          </div>
+          <h2 id="gift-result-title"></h2>
+          <p class="gift-result-description" id="gift-result-description"></p>
+          <div class="gift-code">
+            <div><small>Кодовое слово</small><strong id="gift-result-code"></strong></div>
+            <button class="gift-copy" type="button">Скопировать</button>
+          </div>
+          <div class="gift-result-contacts">
+            <p>Напишите мне кодовое слово в удобном мессенджере. Я подтвержу бонус и отвечу на вопросы ❤️</p>
+            <div class="contact-options">
+              <a class="contact-option contact-option--max" href="https://max.ru/u/f9LHodD0cOJBxAYv1kH4C_VktHo_U9FZgNO-Ip1Wbeiz_L7MdDSBsA9UL8k" target="_blank" rel="noopener noreferrer">MAX</a>
+              <a class="contact-option contact-option--telegram" href="https://t.me/DinaraEng" target="_blank" rel="noopener noreferrer">Telegram</a>
+              <a class="contact-option contact-option--vk" href="https://vk.ru/dinaraeng" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+            </div>
+          </div>
+          <button class="gift-back" type="button">← Посмотреть другие конверты</button>
         </div>
       </div>
     </dialog>
@@ -2190,6 +3080,114 @@
     lessonDialog.addEventListener("click", (event) => {
       if (event.target === lessonDialog) lessonDialog.close();
     });
+
+    const giftFab = document.getElementById("gift-fab");
+    const giftDialog = document.getElementById("gift-dialog");
+    const giftDialogCard = giftDialog.querySelector(".gift-dialog-card");
+    const giftPicker = document.getElementById("gift-picker");
+    const giftResult = document.getElementById("gift-result");
+    const giftResultTitle = document.getElementById("gift-result-title");
+    const giftResultDescription = document.getElementById("gift-result-description");
+    const giftResultCode = document.getElementById("gift-result-code");
+    const formatsSection = document.getElementById("formats");
+    const giftBack = giftDialog.querySelector(".gift-back");
+    const isLocalGiftPreview = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+    const giftStorageKey = "dinaraEnglishSelectedGift";
+    let selectedGiftCode = "";
+
+    giftBack.hidden = !isLocalGiftPreview;
+
+    function getSavedGiftCode() {
+      if (isLocalGiftPreview) return "";
+      if (selectedGiftCode) return selectedGiftCode;
+      try {
+        selectedGiftCode = window.localStorage.getItem(giftStorageKey) || "";
+        return selectedGiftCode;
+      } catch (error) {
+        return "";
+      }
+    }
+
+    function saveGiftCode(code) {
+      if (isLocalGiftPreview) return;
+      selectedGiftCode = code;
+      try {
+        window.localStorage.setItem(giftStorageKey, code);
+      } catch (error) {
+        // The selected envelope remains locked for the current page session.
+      }
+    }
+
+    function resetGiftDialog() {
+      giftPicker.classList.remove("hidden");
+      giftResult.classList.remove("visible", "gift-placeholder");
+      giftDialogCard.classList.remove("result-active");
+      giftDialogCard.removeAttribute("data-gift-theme");
+      giftDialog.querySelectorAll(".gift-envelope").forEach((envelope) => {
+        envelope.classList.remove("opening");
+        envelope.disabled = false;
+      });
+    }
+
+    function openGiftDialog() {
+      resetGiftDialog();
+      if (!giftDialog.open) giftDialog.showModal();
+      const savedCode = getSavedGiftCode();
+      if (savedCode) {
+        const savedEnvelope = [...giftDialog.querySelectorAll(".gift-envelope")]
+          .find((envelope) => envelope.dataset.code === savedCode);
+        if (savedEnvelope) showGiftResult(savedEnvelope);
+      }
+    }
+
+    function showGiftResult(envelope) {
+      const isPlaceholder = envelope.dataset.placeholder === "true";
+      giftResultTitle.textContent = envelope.dataset.title;
+      giftResultDescription.textContent = envelope.dataset.description;
+      giftResultCode.textContent = envelope.dataset.code;
+      giftDialogCard.dataset.giftTheme = envelope.dataset.theme;
+      giftDialogCard.classList.add("result-active");
+      giftResult.classList.toggle("gift-placeholder", isPlaceholder);
+      giftPicker.classList.add("hidden");
+      giftResult.classList.add("visible");
+    }
+
+    giftFab.addEventListener("click", openGiftDialog);
+    giftDialog.querySelector(".gift-dialog-close").addEventListener("click", () => giftDialog.close());
+    giftBack.addEventListener("click", () => {
+      if (isLocalGiftPreview) resetGiftDialog();
+    });
+    giftDialog.addEventListener("click", (event) => {
+      if (event.target === giftDialog) giftDialog.close();
+    });
+
+    giftDialog.querySelectorAll(".gift-envelope").forEach((envelope) => {
+      envelope.addEventListener("click", () => {
+        giftDialog.querySelectorAll(".gift-envelope").forEach((item) => item.disabled = true);
+        envelope.classList.add("opening");
+        saveGiftCode(envelope.dataset.code);
+        window.setTimeout(() => showGiftResult(envelope), 1450);
+      });
+    });
+
+    giftDialog.querySelector(".gift-copy").addEventListener("click", async (event) => {
+      try {
+        await navigator.clipboard.writeText(giftResultCode.textContent);
+        event.currentTarget.textContent = "Скопировано";
+        window.setTimeout(() => event.currentTarget.textContent = "Скопировать", 1500);
+      } catch (error) {
+        event.currentTarget.textContent = "Выделите код";
+      }
+    });
+
+    const giftObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        giftFab.classList.add("visible");
+        giftObserver.disconnect();
+      }
+    }, { threshold: 0.2 });
+
+    giftObserver.observe(formatsSection);
   </script>
 </body>
 </html>
