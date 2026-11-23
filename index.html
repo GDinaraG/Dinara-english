@@ -2573,6 +2573,14 @@
               </div>
             </div>
             <div class="testimonial-card">
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть отзыв мамы ученицы о спокойном подходе"><img src="assets/reviews/review-calm.png" alt="Сообщение мамы ученицы о спокойном и понимающем подходе" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Спокойный и понимающий учитель</span>
+                <p class="testimonial-quote">«Таня говорит, вы самый спокойный и понимающий учитель. Это прямо то, что нам надо»</p>
+                <span class="testimonial-source">Мама ученицы · сообщение</span>
+              </div>
+            </div>
+            <div class="testimonial-card">
               <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть оригинал отзыва Марины"><img src="assets/reviews/review-marina.png" alt="Оригинальный отзыв Марины о занятиях ребёнка" loading="lazy"></button>
               <div class="testimonial-content">
                 <span class="testimonial-label">Виден результат ребёнка</span>
@@ -2602,6 +2610,14 @@
                 <span class="testimonial-label">Удалось заинтересовать</span>
                 <p class="testimonial-quote">«Очень сложно заинтересовать подростка, но у Динары получилось! Уже виден прогресс»</p>
                 <span class="testimonial-source">Виктория · Авито</span>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <button class="testimonial-image-button lesson-image-button" type="button" aria-label="Открыть отзыв родителя об активности и школьном результате"><img src="assets/reviews/review-active.png" alt="Сообщение родителя об активности ребёнка на уроках и тесте на четыре" loading="lazy"></button>
+              <div class="testimonial-content">
+                <span class="testimonial-label">Стал активнее, главное, что ему интересно</span>
+                <p class="testimonial-quote">«Стал активнее, меньше витает в облаках. Последний тест написал на 4, и на уроки ходит с интересом»</p>
+                <span class="testimonial-source">Мама ученика · сообщение</span>
               </div>
             </div>
             <div class="testimonial-card">
@@ -3082,6 +3098,7 @@
     });
 
     const giftFab = document.getElementById("gift-fab");
+    const giftFabCopy = giftFab.querySelector(".gift-fab-copy");
     const giftDialog = document.getElementById("gift-dialog");
     const giftDialogCard = giftDialog.querySelector(".gift-dialog-card");
     const giftPicker = document.getElementById("gift-picker");
@@ -3108,9 +3125,16 @@
       }
     }
 
+    function updateGiftFabCopy() {
+      giftFabCopy.textContent = selectedGiftCode || getSavedGiftCode()
+        ? "Ваш подарок"
+        : "Дарю подарок!";
+    }
+
     function saveGiftCode(code) {
-      if (isLocalGiftPreview) return;
       selectedGiftCode = code;
+      updateGiftFabCopy();
+      if (isLocalGiftPreview) return;
       try {
         window.localStorage.setItem(giftStorageKey, code);
       } catch (error) {
@@ -3188,6 +3212,7 @@
     }, { threshold: 0.2 });
 
     giftObserver.observe(formatsSection);
+    updateGiftFabCopy();
   </script>
 </body>
 </html>
